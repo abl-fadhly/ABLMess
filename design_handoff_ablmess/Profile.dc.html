@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;background:#eeedec;color:#2e2a29;-webkit-font-smoothing:antialiased}a{color:#21508c}a:hover{color:#193d6b}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#eeedec" data-screen-label="Profile">
+  <dc-import style="align-self:stretch" name="Sidebar" active="profile" hint-size="240px,100vh"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <main style="flex:1;padding:32px;max-width:1152px;width:100%;margin:0 auto;box-sizing:border-box">
+      <div style="max-width:448px">
+        <div style="margin-bottom:28px">
+          <h1 style="margin:0;font-size:24px;font-weight:700;color:#2e2a29;letter-spacing:-0.01em">Profile</h1>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+            <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">My Details</h2>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">First name</label>
+                  <input type="text" value="Dewi" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+                </div>
+                <div>
+                  <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Last name</label>
+                  <input type="text" value="Lestari" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+                </div>
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Phone</label>
+                <input type="text" value="+62 812 3456 7890" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Email</label>
+                <input type="email" value="dewi.lestari@ablmess.local" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+              <div>
+                <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:8px 16px;font-size:14px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+            <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">Change Password</h2>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Current password</label>
+                <input type="password" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">New password</label>
+                <input type="password" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+              <div>
+                <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:8px 16px;font-size:14px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Change Password</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

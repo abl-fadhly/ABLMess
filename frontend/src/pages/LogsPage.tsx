@@ -3,7 +3,7 @@ import { api } from '../api/client'
 import { useFetch } from '../hooks/useFetch'
 import { useBedIndex, type BedInfo } from '../hooks/useBedIndex'
 import { Spinner, ErrorBanner, EmptyState } from '../components/Status'
-import { Badge, Card, PageHeader, Select, Table, Td, Th, Tr } from '../components/ui'
+import { Badge, Card, Chip, PageHeader, Select, Table, Td, Th, Tr } from '../components/ui'
 import type {
   BookingDto,
   BookingStatus,
@@ -255,17 +255,11 @@ export function LogsPage() {
     <div>
       <PageHeader title="Logs" subtitle="History of crew requests, room bookings, and outside hotel placements" />
 
-      <div className="flex gap-1 mb-4">
+      <div className="flex gap-1.5 mb-4">
         {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            className={`px-3.5 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-              tab === t.key ? 'bg-secondary-600 text-white' : 'text-neutral-600 hover:bg-neutral-200/70'
-            }`}
-          >
+          <Chip key={t.key} active={tab === t.key} onClick={() => setTab(t.key)}>
             {t.label}
-          </button>
+          </Chip>
         ))}
       </div>
 

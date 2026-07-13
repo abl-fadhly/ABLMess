@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;background:#eeedec;color:#2e2a29;-webkit-font-smoothing:antialiased}a{color:#21508c}a:hover{color:#193d6b}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#eeedec" data-screen-label="Rooms">
+  <dc-import style="align-self:stretch" name="Sidebar" active="rooms" hint-size="240px,100vh"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <main style="flex:1;padding:32px;max-width:1152px;width:100%;margin:0 auto;box-sizing:border-box">
+      <div style="margin-bottom:28px">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#2e2a29;letter-spacing:-0.01em">Rooms</h1>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px;max-width:448px;box-sizing:border-box">
+          <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">Add Room</h2>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Room name</label>
+              <input type="text" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Location</label>
+              <select style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+                <option>Select a location</option>
+                <option>Mess Jakarta</option>
+                <option>Mess Surabaya</option>
+                <option>Mess Batam</option>
+              </select>
+            </div>
+            <div>
+              <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:8px 16px;font-size:14px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Add Room</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+          <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">All Rooms</h2>
+          <ul style="list-style:none;margin:0;padding:0">
+            <li style="padding:4px 0;border-bottom:1px solid #eeedec">
+              <div style="display:flex;align-items:center;justify-content:space-between;border-radius:8px;padding:8px 12px;margin:0 -12px" style-hover="background:#f8f7f7">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <svg viewBox="0 0 20 20" fill="currentColor" style="height:14px;width:14px;color:#a9a19e;transform:rotate(90deg);flex-shrink:0" aria-hidden="true"><path d="M7.05 4.55a1 1 0 011.414 0l4.243 4.243a1 1 0 010 1.414l-4.243 4.243a1 1 0 01-1.414-1.414L10.586 9.5 7.05 5.964a1 1 0 010-1.414z"></path></svg>
+                  <span style="font-weight:500;color:#2e2a29;font-size:15px">Room 101</span>
+                  <span style="color:#a9a19e;font-size:14px">Mess Jakarta · 4 beds</span>
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fcf1de;color:#714b09;box-shadow:inset 0 0 0 1px rgba(198,131,16,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#c68310"></span>Occupied</span>
+                </div>
+                <button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button>
+              </div>
+              <div style="padding-left:16px;border-left:2px solid #eeedec;margin:8px 0 8px 0;display:flex;flex-direction:column;gap:8px">
+                <ul style="list-style:none;margin:0;padding:0;font-size:14px;display:flex;flex-direction:column;gap:4px">
+                  <li style="display:flex;align-items:center;justify-content:space-between"><span style="color:#5c5551">Bed A</span><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Remove</button></li>
+                  <li style="display:flex;align-items:center;justify-content:space-between"><span style="color:#5c5551">Bed B</span><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Remove</button></li>
+                  <li style="display:flex;align-items:center;justify-content:space-between"><span style="color:#5c5551">Bed C</span><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Remove</button></li>
+                  <li style="display:flex;align-items:center;justify-content:space-between"><span style="color:#5c5551">Bed D</span><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Remove</button></li>
+                </ul>
+                <div style="display:flex;gap:8px;align-items:flex-start">
+                  <input type="text" placeholder="New bed name" style="flex:1;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:6px 12px;font-size:12px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+                  <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:6px 10px;font-size:12px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Add Bed</button>
+                </div>
+              </div>
+            </li>
+            <li style="padding:4px 0;border-bottom:1px solid #eeedec">
+              <div style="display:flex;align-items:center;justify-content:space-between;border-radius:8px;padding:8px 12px;margin:0 -12px" style-hover="background:#f8f7f7">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <svg viewBox="0 0 20 20" fill="currentColor" style="height:14px;width:14px;color:#a9a19e;flex-shrink:0" aria-hidden="true"><path d="M7.05 4.55a1 1 0 011.414 0l4.243 4.243a1 1 0 010 1.414l-4.243 4.243a1 1 0 01-1.414-1.414L10.586 9.5 7.05 5.964a1 1 0 010-1.414z"></path></svg>
+                  <span style="font-weight:500;color:#2e2a29;font-size:15px">Room 102</span>
+                  <span style="color:#a9a19e;font-size:14px">Mess Jakarta · 3 beds</span>
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fae0e2;color:#691116;box-shadow:inset 0 0 0 1px rgba(184,30,38,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#b81e26"></span>Full</span>
+                </div>
+                <button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button>
+              </div>
+              <button style="font-size:12px;color:#21508c;background:none;border:none;cursor:pointer;padding:0;margin:4px 0 4px 24px;font-family:inherit" style-hover="text-decoration:underline">Manage beds</button>
+            </li>
+            <li style="padding:4px 0;border-bottom:1px solid #eeedec">
+              <div style="display:flex;align-items:center;justify-content:space-between;border-radius:8px;padding:8px 12px;margin:0 -12px" style-hover="background:#f8f7f7">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <svg viewBox="0 0 20 20" fill="currentColor" style="height:14px;width:14px;color:#a9a19e;flex-shrink:0" aria-hidden="true"><path d="M7.05 4.55a1 1 0 011.414 0l4.243 4.243a1 1 0 010 1.414l-4.243 4.243a1 1 0 01-1.414-1.414L10.586 9.5 7.05 5.964a1 1 0 010-1.414z"></path></svg>
+                  <span style="font-weight:500;color:#2e2a29;font-size:15px">Room 103</span>
+                  <span style="color:#a9a19e;font-size:14px">Mess Surabaya · 2 beds</span>
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#e3f7eb;color:#1c5f34;box-shadow:inset 0 0 0 1px rgba(48,166,91,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#30a65b"></span>Empty</span>
+                </div>
+                <button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button>
+              </div>
+              <button style="font-size:12px;color:#21508c;background:none;border:none;cursor:pointer;padding:0;margin:4px 0 4px 24px;font-family:inherit" style-hover="text-decoration:underline">Manage beds</button>
+            </li>
+            <li style="padding:4px 0">
+              <div style="display:flex;align-items:center;justify-content:space-between;border-radius:8px;padding:8px 12px;margin:0 -12px" style-hover="background:#f8f7f7">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <svg viewBox="0 0 20 20" fill="currentColor" style="height:14px;width:14px;color:#a9a19e;flex-shrink:0" aria-hidden="true"><path d="M7.05 4.55a1 1 0 011.414 0l4.243 4.243a1 1 0 010 1.414l-4.243 4.243a1 1 0 01-1.414-1.414L10.586 9.5 7.05 5.964a1 1 0 010-1.414z"></path></svg>
+                  <span style="font-weight:500;color:#2e2a29;font-size:15px">Room 201</span>
+                  <span style="color:#a9a19e;font-size:14px">Mess Batam · 0 beds</span>
+                  <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#e3f7eb;color:#1c5f34;box-shadow:inset 0 0 0 1px rgba(48,166,91,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#30a65b"></span>Empty</span>
+                </div>
+                <button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button>
+              </div>
+              <button style="font-size:12px;color:#21508c;background:none;border:none;cursor:pointer;padding:0;margin:4px 0 4px 24px;font-family:inherit" style-hover="text-decoration:underline">Add beds</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

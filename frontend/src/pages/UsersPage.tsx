@@ -141,7 +141,6 @@ function UserModal({
           <Select value={form.userType} onChange={(e) => setForm({ ...form, userType: e.target.value as UserType })}>
             <option value="Crew">Crew</option>
             <option value="GS">GS</option>
-            <option value="Admin">Admin</option>
           </Select>
         </div>
 
@@ -279,13 +278,17 @@ export function UsersPage() {
                     <Badge tone={roleTone[u.userType]}>{u.userType}</Badge>
                   </Td>
                   <Td>
-                    <div className="flex gap-3">
-                      <LinkButton onClick={() => setEditing(u)}>Edit</LinkButton>
-                      <LinkButton onClick={() => resetPassword(u.id)}>Reset Password</LinkButton>
-                      <LinkButton tone="danger" onClick={() => remove(u.id)}>
-                        Delete
-                      </LinkButton>
-                    </div>
+                    {u.userType === 'Admin' ? (
+                      <span className="text-xs text-neutral-400">Protected account</span>
+                    ) : (
+                      <div className="flex gap-3">
+                        <LinkButton onClick={() => setEditing(u)}>Edit</LinkButton>
+                        <LinkButton onClick={() => resetPassword(u.id)}>Reset Password</LinkButton>
+                        <LinkButton tone="danger" onClick={() => remove(u.id)}>
+                          Delete
+                        </LinkButton>
+                      </div>
+                    )}
                   </Td>
                 </Tr>
               ))}

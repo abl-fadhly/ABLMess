@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;background:#eeedec;color:#2e2a29;-webkit-font-smoothing:antialiased}a{color:#21508c}a:hover{color:#193d6b}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#eeedec" data-screen-label="Bookings">
+  <dc-import style="align-self:stretch" name="Sidebar" active="bookings" hint-size="240px,100vh"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <main style="flex:1;padding:32px;max-width:1152px;width:100%;margin:0 auto;box-sizing:border-box">
+      <div style="margin-bottom:28px">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#2e2a29;letter-spacing:-0.01em">Bookings</h1>
+      </div>
+
+      <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+        <div style="overflow-x:auto;margin:0 -24px">
+          <table style="width:100%;font-size:14px;border-collapse:collapse">
+            <thead>
+              <tr>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Booking #</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Crew</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Bed</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">From</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">To</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Status</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#5c5551">9</td>
+                <td style="padding:14px 24px;color:#5c5551">Bambang Sutrisno</td>
+                <td style="padding:14px 24px;color:#5c5551">Room 101 / Bed A</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-13</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-20</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fcf1de;color:#714b09;box-shadow:inset 0 0 0 1px rgba(198,131,16,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#c68310"></span>Booked</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#1c5f34;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Check In</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Cancel</button></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#5c5551">8</td>
+                <td style="padding:14px 24px;color:#5c5551">Eko Prasetyo</td>
+                <td style="padding:14px 24px;color:#5c5551">Room 103 / Bed B</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-06</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-13</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#e3f7eb;color:#1c5f34;box-shadow:inset 0 0 0 1px rgba(48,166,91,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#30a65b"></span>Checked In</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Check Out</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Cancel</button></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#5c5551">7</td>
+                <td style="padding:14px 24px;color:#5c5551">Dedi Kurniawan</td>
+                <td style="padding:14px 24px;color:#5c5551">Room 104 / Bed A</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-06-28</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-05</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#eeedec;color:#726965;box-shadow:inset 0 0 0 1px #dddbd9"><span style="height:6px;width:6px;border-radius:9999px;background:#a9a19e"></span>Checked Out</span></td>
+                <td style="padding:14px 24px"></td>
+              </tr>
+              <tr style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#5c5551">6</td>
+                <td style="padding:14px 24px;color:#5c5551">Siti Rahayu</td>
+                <td style="padding:14px 24px;color:#5c5551">Room 102 / Bed C</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-01</td>
+                <td style="padding:14px 24px;color:#5c5551">2026-07-05</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fae0e2;color:#691116;box-shadow:inset 0 0 0 1px rgba(184,30,38,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#b81e26"></span>Cancelled</span></td>
+                <td style="padding:14px 24px"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

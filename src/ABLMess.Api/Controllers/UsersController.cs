@@ -43,6 +43,11 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
     [Authorize(Roles = "Admin,GS")]
     public async Task<ActionResult<UserDto>> Create(CreateUserRequest request)
     {
+        if (request.UserType == UserType.Admin)
+        {
+            return StatusCode(403, "Admin accounts cannot be created.");
+        }
+
         var user = new User
         {
             FirstName = request.FirstName,
@@ -72,6 +77,16 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
         if (user is null)
         {
             return NotFound();
+        }
+
+        if (user.UserType == UserType.Admin)
+        {
+            return StatusCode(403, "Admin accounts cannot be edited.");
+        }
+
+        if (request.UserType == UserType.Admin)
+        {
+            return StatusCode(403, "Admin accounts cannot be created.");
         }
 
         user.FirstName = request.FirstName;
@@ -117,6 +132,11 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
             return NotFound();
         }
 
+        if (user.UserType == UserType.Admin)
+        {
+            return StatusCode(403, "Admin accounts cannot be deleted.");
+        }
+
         db.Users.Remove(user);
         await db.SaveChangesAsync();
         return NoContent();
@@ -130,6 +150,11 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
         if (user is null)
         {
             return NotFound();
+        }
+
+        if (user.UserType == UserType.Admin)
+        {
+            return StatusCode(403, "Admin passwords cannot be reset here.");
         }
 
         user.PasswordHash = passwordHasher.HashPassword(user, request.NewPassword);

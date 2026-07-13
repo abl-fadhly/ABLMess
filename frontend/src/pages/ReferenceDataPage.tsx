@@ -4,7 +4,7 @@ import { useFetch } from '../hooks/useFetch'
 import { useConfirm } from '../components/ConfirmContext'
 import { useToast } from '../components/ToastContext'
 import { Spinner, ErrorBanner, EmptyState } from '../components/Status'
-import { Button, Card, Input, LinkButton, PageHeader } from '../components/ui'
+import { Button, Card, Chip, Input, LinkButton, PageHeader } from '../components/ui'
 import type { JabatanDto, LocationDto, ShipDto } from '../api/types'
 
 type Tab = 'ships' | 'jabatans' | 'locations'
@@ -261,17 +261,11 @@ export function ReferenceDataPage() {
     <div>
       <PageHeader title="Reference Data" />
 
-      <div className="flex gap-1 mb-4">
+      <div className="flex gap-1.5 mb-4">
         {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            className={`px-3.5 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-              tab === t.key ? 'bg-secondary-600 text-white' : 'text-neutral-600 hover:bg-neutral-200/70'
-            }`}
-          >
+          <Chip key={t.key} active={tab === t.key} onClick={() => setTab(t.key)}>
             {t.label}
-          </button>
+          </Chip>
         ))}
       </div>
       <Card>

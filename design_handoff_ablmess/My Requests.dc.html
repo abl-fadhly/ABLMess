@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;background:#eeedec;color:#2e2a29;-webkit-font-smoothing:antialiased}a{color:#21508c}a:hover{color:#193d6b}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#eeedec" data-screen-label="My Requests (Crew)">
+  <dc-import style="align-self:stretch" name="Sidebar" active="my-requests" role="crew" hint-size="240px,100vh"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <main style="flex:1;padding:32px;max-width:1152px;width:100%;margin:0 auto;box-sizing:border-box">
+      <div style="margin-bottom:28px">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#2e2a29;letter-spacing:-0.01em">My Requests</h1>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px;max-width:448px;box-sizing:border-box">
+          <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">Request a Room</h2>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">From</label>
+                <input type="date" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">To</label>
+                <input type="date" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;margin-bottom:6px">Comment (optional)</label>
+              <input type="text" style="width:100%;border-radius:8px;border:1px solid #c5c1be;background:#ffffff;padding:8px 12px;font-size:14px;color:#2e2a29;box-sizing:border-box;font-family:inherit">
+            </div>
+            <div>
+              <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:8px 16px;font-size:14px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Submit Request</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+          <h2 style="margin:0 0 16px;font-weight:600;color:#2e2a29;font-size:16px">History</h2>
+          <div style="overflow-x:auto;margin:0 -24px">
+            <table style="width:100%;font-size:14px;border-collapse:collapse">
+              <thead>
+                <tr>
+                  <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">From</th>
+                  <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">To</th>
+                  <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Status</th>
+                  <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Comment</th>
+                  <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                  <td style="padding:14px 24px;color:#5c5551">2026-07-20</td>
+                  <td style="padding:14px 24px;color:#5c5551">2026-07-27</td>
+                  <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fcf1de;color:#714b09;box-shadow:inset 0 0 0 1px rgba(198,131,16,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#c68310"></span>Requested</span></td>
+                  <td style="padding:14px 24px;color:#877d78">Arriving on KM Sinar Abadi</td>
+                  <td style="padding:14px 24px"><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Cancel</button></td>
+                </tr>
+                <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                  <td style="padding:14px 24px;color:#5c5551">2026-06-20</td>
+                  <td style="padding:14px 24px;color:#5c5551">2026-06-27</td>
+                  <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#e3f7eb;color:#1c5f34;box-shadow:inset 0 0 0 1px rgba(48,166,91,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#30a65b"></span>Booked</span></td>
+                  <td style="padding:14px 24px;color:#877d78">—</td>
+                  <td style="padding:14px 24px"></td>
+                </tr>
+                <tr style-hover="background:rgba(248,247,247,.8)">
+                  <td style="padding:14px 24px;color:#5c5551">2026-05-11</td>
+                  <td style="padding:14px 24px;color:#5c5551">2026-05-15</td>
+                  <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#e1ecfa;color:#123a68;box-shadow:inset 0 0 0 1px rgba(32,102,182,.3)"><span style="height:6px;width:6px;border-radius:9999px;background:#2066b6"></span>Placed</span></td>
+                  <td style="padding:14px 24px;color:#877d78">—</td>
+                  <td style="padding:14px 24px"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

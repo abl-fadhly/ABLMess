@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;background:#eeedec;color:#2e2a29;-webkit-font-smoothing:antialiased}a{color:#21508c}a:hover{color:#193d6b}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;background:#eeedec" data-screen-label="Users">
+  <dc-import style="align-self:stretch" name="Sidebar" active="users" hint-size="240px,100vh"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <main style="flex:1;padding:32px;max-width:1152px;width:100%;margin:0 auto;box-sizing:border-box">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;gap:16px;flex-wrap:wrap">
+        <h1 style="margin:0;font-size:24px;font-weight:700;color:#2e2a29;letter-spacing:-0.01em">Users</h1>
+        <button style="display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-weight:500;padding:8px 16px;font-size:14px;background:#c11524;color:#ffffff;border:none;cursor:pointer;box-shadow:0 1px 2px rgba(193,21,36,.25);font-family:inherit" style-hover="background:#9c111d">Add User</button>
+      </div>
+
+      <div style="background:#ffffff;border:1px solid rgba(221,219,217,.8);border-radius:12px;box-shadow:0 1px 2px rgba(221,219,217,.4);padding:24px">
+        <div style="overflow-x:auto;margin:0 -24px">
+          <table style="width:100%;font-size:14px;border-collapse:collapse">
+            <thead>
+              <tr>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Name</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Email</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Type</th>
+                <th style="text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#877d78;padding:10px 24px;border-bottom:1px solid #dddbd9">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#2e2a29;font-weight:500">Sari Admin</td>
+                <td style="padding:14px 24px;color:#5c5551">admin@ablmess.local</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#fdf1f2;color:#9c111d;box-shadow:inset 0 0 0 1px #f8bfc3"><span style="height:6px;width:6px;border-radius:9999px;background:#e6192a"></span>Admin</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Edit</button><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Reset Password</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#2e2a29;font-weight:500">Dewi Lestari</td>
+                <td style="padding:14px 24px;color:#5c5551">dewi.lestari@ablmess.local</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#f3f7fc;color:#21508c;box-shadow:inset 0 0 0 1px #c5d8f1"><span style="height:6px;width:6px;border-radius:9999px;background:#3075cf"></span>GS</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Edit</button><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Reset Password</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#2e2a29;font-weight:500">Budi Santoso</td>
+                <td style="padding:14px 24px;color:#5c5551">budi.santoso@example.com</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#eeedec;color:#726965;box-shadow:inset 0 0 0 1px #dddbd9"><span style="height:6px;width:6px;border-radius:9999px;background:#a9a19e"></span>Crew</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Edit</button><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Reset Password</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button></div></td>
+              </tr>
+              <tr style="border-bottom:1px solid #eeedec" style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#2e2a29;font-weight:500">Andi Wijaya</td>
+                <td style="padding:14px 24px;color:#5c5551">andi.wijaya@example.com</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#eeedec;color:#726965;box-shadow:inset 0 0 0 1px #dddbd9"><span style="height:6px;width:6px;border-radius:9999px;background:#a9a19e"></span>Crew</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Edit</button><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Reset Password</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button></div></td>
+              </tr>
+              <tr style-hover="background:rgba(248,247,247,.8)">
+                <td style="padding:14px 24px;color:#2e2a29;font-weight:500">Siti Rahayu</td>
+                <td style="padding:14px 24px;color:#5c5551">siti.rahayu@example.com</td>
+                <td style="padding:14px 24px"><span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:9999px;font-size:12px;font-weight:500;background:#eeedec;color:#726965;box-shadow:inset 0 0 0 1px #dddbd9"><span style="height:6px;width:6px;border-radius:9999px;background:#a9a19e"></span>Crew</span></td>
+                <td style="padding:14px 24px"><div style="display:flex;gap:12px"><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Edit</button><button style="font-size:14px;font-weight:500;color:#21508c;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Reset Password</button><button style="font-size:14px;font-weight:500;color:#691116;background:none;border:none;cursor:pointer;padding:0;font-family:inherit" style-hover="text-decoration:underline">Delete</button></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

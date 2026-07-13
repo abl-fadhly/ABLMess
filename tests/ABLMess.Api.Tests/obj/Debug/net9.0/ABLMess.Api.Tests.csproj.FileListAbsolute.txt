@@ -132,3 +132,4 @@ C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\tests\ABLMess.Api.Tests\obj\Debu
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\tests\ABLMess.Api.Tests\obj\Debug\net9.0\ABLMess.Api.Tests.genruntimeconfig.cache
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\tests\ABLMess.Api.Tests\obj\Debug\net9.0\ref\ABLMess.Api.Tests.dll
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\tests\ABLMess.Api.Tests\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\tests\ABLMess.Api.Tests\obj\Debug\net9.0\ABLMess.Api.Tests.sourcelink.json

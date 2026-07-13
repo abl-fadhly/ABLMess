@@ -185,6 +185,23 @@ export function Badge({ tone, children }: { tone: keyof typeof badgeTones; child
   )
 }
 
+export function Chip({
+  active,
+  className = '',
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement> & { active?: boolean }) {
+  return (
+    <button
+      className={`px-3 py-1 rounded-full text-[13px] font-medium transition-colors ${
+        active
+          ? 'bg-secondary-600 text-white'
+          : 'bg-neutral-50 text-neutral-600 hover:bg-neutral-100'
+      } ${className}`}
+      {...props}
+    />
+  )
+}
+
 export function Table({ children }: { children: ReactNode }) {
   return (
     <div className="overflow-x-auto -mx-5 sm:-mx-6">

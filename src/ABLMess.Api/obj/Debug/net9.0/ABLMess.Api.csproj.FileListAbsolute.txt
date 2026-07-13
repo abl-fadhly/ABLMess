@@ -137,3 +137,4 @@ C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\src\ABLMess.Api\bin\Debug\net9.0
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\src\ABLMess.Api\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\src\ABLMess.Api\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\src\ABLMess.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ABL412-FADHLY\Documents\Fadhly\ABLMess\src\ABLMess.Api\obj\Debug\net9.0\ABLMess.Api.sourcelink.json
