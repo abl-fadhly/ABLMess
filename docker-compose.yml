@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ablmess
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: src/ABLMess.Api/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      ConnectionStrings__Default: "Host=db;Port=5432;Database=ablmess;Username=postgres;Password=postgres"
+      Jwt__Key: "CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_BEFORE_DEPLOYING"
+      InitialAdmin__Email: "admin@ablmess.local"
+      InitialAdmin__Password: "ChangeMe123!"
+      # Fill in when SMTP credentials are available:
+      Smtp__Host: ""
+      Smtp__Port: "587"
+      Smtp__Username: ""
+      Smtp__Password: ""
+      Smtp__FromAddress: "noreply@ablmess.local"
+      Smtp__FromName: "ABLMess"
+
+volumes:
+  db_data:

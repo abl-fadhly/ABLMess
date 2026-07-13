@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Surface — raised elements (cards, modals, sidebar). White in light mode, elevated dark gray in dark mode. */
+  --color-surface: #ffffff;
+
+  /* Primary — cooled crimson brand red. Actions/brand. */
+  --color-primary-50: #fdf1f2;
+  --color-primary-100: #fbdfe1;
+  --color-primary-200: #f8bfc3;
+  --color-primary-300: #f39199;
+  --color-primary-400: #ed5a66;
+  --color-primary-500: #e6192a;
+  --color-primary-600: #c11524;
+  --color-primary-700: #9c111d;
+  --color-primary-800: #770d16;
+  --color-primary-900: #4e090e;
+
+  /* Secondary — corporate blue. Information/structure. */
+  --color-secondary-50: #f3f7fc;
+  --color-secondary-100: #e2ecf8;
+  --color-secondary-200: #c5d8f1;
+  --color-secondary-300: #9cbde8;
+  --color-secondary-400: #6a9cdc;
+  --color-secondary-500: #3075cf;
+  --color-secondary-600: #2962ae;
+  --color-secondary-700: #21508c;
+  --color-secondary-800: #193d6b;
+  --color-secondary-900: #102846;
+
+  /* Neutral — warm gray (hue 20°), replaces Tailwind's default cool slate/neutral. */
+  --color-neutral-50: #f8f7f7;
+  --color-neutral-100: #eeedec;
+  --color-neutral-200: #dddbd9;
+  --color-neutral-300: #c5c1be;
+  --color-neutral-400: #a9a19e;
+  --color-neutral-500: #877d78;
+  --color-neutral-600: #726965;
+  --color-neutral-700: #5c5551;
+  --color-neutral-800: #46413e;
+  --color-neutral-900: #2e2a29;
+
+  /* Semantic status colors — light tint / default / AAA-text dark shade. */
+  --color-success-light: #e3f7eb;
+  --color-success-default: #30a65b;
+  --color-success-dark: #1c5f34;
+
+  --color-warning-light: #fcf1de;
+  --color-warning-default: #c68310;
+  --color-warning-dark: #714b09;
+
+  --color-error-light: #fae0e2;
+  --color-error-default: #b81e26;
+  --color-error-dark: #691116;
+
+  --color-info-light: #e1ecfa;
+  --color-info-default: #2066b6;
+  --color-info-dark: #123a68;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Neutral — dark ramp. Custom-tuned, not a naive inversion of the light ramp. */
+  --color-neutral-50: #1c1a18;
+  --color-neutral-100: #262320;
+  --color-neutral-200: #363330;
+  --color-neutral-300: #4a4642;
+  --color-neutral-400: #665f59;
+  --color-neutral-500: #857c75;
+  --color-neutral-600: #a89f97;
+  --color-neutral-700: #c7bfb8;
+  --color-neutral-800: #e2ddd7;
+  --color-neutral-900: #f5f2ee;
+
+  --color-surface: #252220;
+
+  /* Semantic tint/text pairs flip: dark tint background, bright readable text.
+     Safe to flip (unlike primary/secondary) because these are never used as solid button fills. */
+  --color-success-light: #142e1d;
+  --color-success-default: #3fbb70;
+  --color-success-dark: #7fdba0;
+
+  --color-warning-light: #2e2308;
+  --color-warning-default: #d99a1f;
+  --color-warning-dark: #f0c368;
+
+  --color-error-light: #331013;
+  --color-error-default: #d43540;
+  --color-error-dark: #f5919a;
+
+  --color-info-light: #12233d;
+  --color-info-default: #3d84d1;
+  --color-info-dark: #8fbdf5;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.15s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
