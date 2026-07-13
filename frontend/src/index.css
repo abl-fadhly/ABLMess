@@ -1,114 +1,75 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  /* Surface — raised elements (cards, modals, sidebar). White in light mode, elevated dark gray in dark mode. */
+  /* Surface — raised elements (cards, modals, sidebar). Always pure white. */
   --color-surface: #ffffff;
 
-  /* Primary — cooled crimson brand red. Actions/brand. */
-  --color-primary-50: #fdf1f2;
-  --color-primary-100: #fbdfe1;
-  --color-primary-200: #f8bfc3;
-  --color-primary-300: #f39199;
-  --color-primary-400: #ed5a66;
-  --color-primary-500: #e6192a;
-  --color-primary-600: #c11524;
-  --color-primary-700: #9c111d;
-  --color-primary-800: #770d16;
-  --color-primary-900: #4e090e;
+  /* Primary — corporate maritime blue. Brand/actions/charts/icons. */
+  --color-primary-50: #eaf2fe;
+  --color-primary-100: #d3e4fd;
+  --color-primary-200: #aacafb;
+  --color-primary-300: #82aff9;
+  --color-primary-400: #5b9bff;
+  --color-primary-500: #3e82f8;
+  --color-primary-600: #2d6df6;
+  --color-primary-700: #163e8f;
+  --color-primary-800: #102d63;
+  --color-primary-900: #0a1d42;
 
-  /* Secondary — corporate blue. Information/structure. */
-  --color-secondary-50: #f3f7fc;
-  --color-secondary-100: #e2ecf8;
-  --color-secondary-200: #c5d8f1;
-  --color-secondary-300: #9cbde8;
-  --color-secondary-400: #6a9cdc;
-  --color-secondary-500: #3075cf;
-  --color-secondary-600: #2962ae;
-  --color-secondary-700: #21508c;
-  --color-secondary-800: #193d6b;
-  --color-secondary-900: #102846;
+  /* Secondary — alias of primary. This design system has a single brand hue. */
+  --color-secondary-50: var(--color-primary-50);
+  --color-secondary-100: var(--color-primary-100);
+  --color-secondary-200: var(--color-primary-200);
+  --color-secondary-300: var(--color-primary-300);
+  --color-secondary-400: var(--color-primary-400);
+  --color-secondary-500: var(--color-primary-500);
+  --color-secondary-600: var(--color-primary-600);
+  --color-secondary-700: var(--color-primary-700);
+  --color-secondary-800: var(--color-primary-800);
+  --color-secondary-900: var(--color-primary-900);
 
-  /* Neutral — warm gray (hue 20°), replaces Tailwind's default cool slate/neutral. */
-  --color-neutral-50: #f8f7f7;
-  --color-neutral-100: #eeedec;
-  --color-neutral-200: #dddbd9;
-  --color-neutral-300: #c5c1be;
-  --color-neutral-400: #a9a19e;
-  --color-neutral-500: #877d78;
-  --color-neutral-600: #726965;
-  --color-neutral-700: #5c5551;
-  --color-neutral-800: #46413e;
-  --color-neutral-900: #2e2a29;
+  /* Neutral — cool blue-gray, per brand backgrounds/borders/typography. */
+  --color-neutral-50: #f8fbff;
+  --color-neutral-100: #f3f8fe;
+  --color-neutral-200: #edf3fa;
+  --color-neutral-300: #dce8f8;
+  --color-neutral-400: #a5b2c5;
+  --color-neutral-500: #68758c;
+  --color-neutral-600: #4e5a70;
+  --color-neutral-700: #38445c;
+  --color-neutral-800: #29344a;
+  --color-neutral-900: #1d2a44;
 
   /* Semantic status colors — light tint / default / AAA-text dark shade. */
-  --color-success-light: #e3f7eb;
-  --color-success-default: #30a65b;
-  --color-success-dark: #1c5f34;
+  --color-success-light: #e7f7ee;
+  --color-success-default: #27ae60;
+  --color-success-dark: #1b7a43;
 
-  --color-warning-light: #fcf1de;
-  --color-warning-default: #c68310;
-  --color-warning-dark: #714b09;
+  --color-warning-light: #fdf3dc;
+  --color-warning-default: #f4b740;
+  --color-warning-dark: #8a5b0a;
 
-  --color-error-light: #fae0e2;
-  --color-error-default: #b81e26;
-  --color-error-dark: #691116;
+  --color-error-light: #fbe4e4;
+  --color-error-default: #e95b5b;
+  --color-error-dark: #a62f2f;
 
-  --color-info-light: #e1ecfa;
-  --color-info-default: #2066b6;
-  --color-info-dark: #123a68;
+  --color-info-light: #eaf2fe;
+  --color-info-default: #2d6df6;
+  --color-info-dark: #163e8f;
 }
 
 :root {
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
-  color-scheme: dark;
-
-  /* Neutral — dark ramp. Custom-tuned, not a naive inversion of the light ramp. */
-  --color-neutral-50: #1c1a18;
-  --color-neutral-100: #262320;
-  --color-neutral-200: #363330;
-  --color-neutral-300: #4a4642;
-  --color-neutral-400: #665f59;
-  --color-neutral-500: #857c75;
-  --color-neutral-600: #a89f97;
-  --color-neutral-700: #c7bfb8;
-  --color-neutral-800: #e2ddd7;
-  --color-neutral-900: #f5f2ee;
-
-  --color-surface: #252220;
-
-  /* Semantic tint/text pairs flip: dark tint background, bright readable text.
-     Safe to flip (unlike primary/secondary) because these are never used as solid button fills. */
-  --color-success-light: #142e1d;
-  --color-success-default: #3fbb70;
-  --color-success-dark: #7fdba0;
-
-  --color-warning-light: #2e2308;
-  --color-warning-default: #d99a1f;
-  --color-warning-dark: #f0c368;
-
-  --color-error-light: #331013;
-  --color-error-default: #d43540;
-  --color-error-dark: #f5919a;
-
-  --color-info-light: #12233d;
-  --color-info-default: #3d84d1;
-  --color-info-dark: #8fbdf5;
-}
-
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--color-neutral-50);
+  background: var(--color-neutral-100);
   color: var(--color-neutral-900);
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 @keyframes fade-in {

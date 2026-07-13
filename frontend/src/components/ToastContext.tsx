@@ -70,7 +70,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={toast.id}
             role="status"
-            className={`pointer-events-auto flex items-start gap-2.5 rounded-lg border px-4 py-3 text-sm font-medium shadow-lg shadow-neutral-900/10 dark:shadow-black/30 animate-fade-in ${toneClasses[toast.type]}`}
+            className={`pointer-events-auto flex items-start gap-2.5 rounded-lg border px-4 py-3 text-sm font-medium shadow-lg shadow-neutral-900/10 animate-fade-in ${toneClasses[toast.type]}`}
           >
             <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 shrink-0 mt-0.5" aria-hidden="true">
               <path fillRule="evenodd" d={icons[toast.type]} clipRule="evenodd" />

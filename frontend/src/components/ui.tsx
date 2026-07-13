@@ -122,9 +122,9 @@ export function Card({
 }) {
   return (
     <div
-      className={`bg-surface border border-neutral-200/80 rounded-xl shadow-sm shadow-neutral-200/40 dark:shadow-black/20 p-5 sm:p-6 transition-all duration-200 ${
+      className={`bg-surface border border-neutral-200/80 rounded-xl shadow-sm shadow-neutral-200/40 p-5 sm:p-6 transition-all duration-200 ${
         interactive
-          ? 'hover:shadow-md hover:shadow-neutral-300/40 dark:hover:shadow-black/30 hover:-translate-y-0.5 hover:border-secondary-200 dark:hover:border-secondary-700 cursor-pointer'
+          ? 'hover:shadow-md hover:shadow-neutral-300/40 hover:-translate-y-0.5 hover:border-secondary-200 cursor-pointer'
           : ''
       } ${className}`}
     >
@@ -166,11 +166,11 @@ const badgeTones: Record<string, { pill: string; dot: string }> = {
   error: { pill: 'bg-error-light text-error-dark ring-1 ring-inset ring-error-default/30', dot: 'bg-error-default' },
   neutral: { pill: 'bg-neutral-100 text-neutral-600 ring-1 ring-inset ring-neutral-200', dot: 'bg-neutral-400' },
   primary: {
-    pill: 'bg-primary-50 text-primary-700 ring-1 ring-inset ring-primary-200 dark:bg-primary-900/40 dark:text-primary-300 dark:ring-primary-800/60',
+    pill: 'bg-primary-50 text-primary-700 ring-1 ring-inset ring-primary-200',
     dot: 'bg-primary-500',
   },
   secondary: {
-    pill: 'bg-secondary-50 text-secondary-700 ring-1 ring-inset ring-secondary-200 dark:bg-secondary-900/40 dark:text-secondary-300 dark:ring-secondary-800/60',
+    pill: 'bg-secondary-50 text-secondary-700 ring-1 ring-inset ring-secondary-200',
     dot: 'bg-secondary-500',
   },
 }
@@ -243,7 +243,7 @@ export function Modal({
       onClick={onClose}
     >
       <div
-        className="bg-surface rounded-xl p-6 w-full max-w-md space-y-4 shadow-xl shadow-neutral-900/15 dark:shadow-black/40 animate-scale-in max-h-[90vh] overflow-y-auto"
+        className="bg-surface rounded-xl p-6 w-full max-w-md space-y-4 shadow-xl shadow-neutral-900/15 animate-scale-in max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="font-semibold text-neutral-900 text-lg tracking-tight">{title}</h2>
