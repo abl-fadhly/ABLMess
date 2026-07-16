@@ -69,8 +69,8 @@ public class DashboardControllerTests
         var ok = Assert.IsType<OkObjectResult>(result.Result);
         var dto = Assert.IsType<Dtos.DashboardDto>(ok.Value);
         Assert.Single(dto.UpcomingCheckInsAndOuts.Tomorrow);
-        Assert.Contains(dto.UpcomingCheckInsAndOuts.Next3Days, u => u.Kind == "ClockIn");
-        Assert.Contains(dto.UpcomingCheckInsAndOuts.Next7Days, u => u.Kind == "ClockIn");
+        Assert.Contains(dto.UpcomingCheckInsAndOuts.Next3Days, u => u.Kind == "CheckIn");
+        Assert.Contains(dto.UpcomingCheckInsAndOuts.Next7Days, u => u.Kind == "CheckIn");
     }
 
     [Fact]

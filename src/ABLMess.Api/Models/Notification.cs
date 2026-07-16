@@ -3,8 +3,8 @@ namespace ABLMess.Api.Models;
 public enum NotificationType
 {
     RequestBooked,
-    ClockInReminder,
-    ClockOutReminder
+    CheckInReminder,
+    CheckOutReminder
 }
 
 public enum NotificationChannel

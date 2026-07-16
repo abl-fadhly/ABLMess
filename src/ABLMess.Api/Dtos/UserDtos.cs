@@ -11,7 +11,9 @@ public record UserDto(
     int? JabatanId,
     string Phone,
     UserType UserType,
-    string Email);
+    string Email,
+    string EmployeeCode,
+    string? PhotoUrl);
 
 public record CreateUserRequest(
     string FirstName,
@@ -22,7 +24,8 @@ public record CreateUserRequest(
     string Phone,
     UserType UserType,
     string Email,
-    string Password);
+    string Password,
+    string? PhotoUrl);
 
 public record UpdateUserRequest(
     string FirstName,
@@ -32,7 +35,8 @@ public record UpdateUserRequest(
     int? JabatanId,
     string Phone,
     UserType UserType,
-    string Email);
+    string Email,
+    string? PhotoUrl);
 
 public record ResetPasswordRequest(string NewPassword);
 
@@ -42,4 +46,5 @@ public record UpdateProfileRequest(
     string FirstName,
     string LastName,
     string Phone,
-    string Email);
+    string Email,
+    string? PhotoUrl);

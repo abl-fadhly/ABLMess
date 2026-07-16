@@ -1,6 +1,9 @@
+using System.Security.Claims;
+using ABLMess.Api.Audit;
 using ABLMess.Api.BookingLogic;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
+using ABLMess.Api.Models;
 using ABLMess.Api.Notifications;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,8 +17,10 @@ namespace ABLMess.Api.Controllers;
 [ApiController]
 [Route("api/bookings")]
 [Authorize(Roles = "Admin,GS")]
-public class BookingsController(AblMessDbContext db, RoomAvailabilityService availability, NotificationService notifications) : ControllerBase
+public class BookingsController(AblMessDbContext db, RoomAvailabilityService availability, NotificationService notifications, AuditLogService auditLog) : ControllerBase
 {
+    private int CurrentUserId => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
     [HttpPost]
     public async Task<ActionResult<BookingDto>> Create(CreateBookingDto dto)
     {
@@ -59,6 +64,7 @@ public class BookingsController(AblMessDbContext db, RoomAvailabilityService ava
         db.Bookings.Add(booking);
         request.Status = RequestStatus.Booked;
         request.UpdatedAt = DateTime.UtcNow;
+        auditLog.Log(AuditActionType.Booked, "Booked into a room", actorUserId: CurrentUserId, subjectUserId: request.UserId);
         await db.SaveChangesAsync();
 
         await notifications.NotifyRequestBookedAsync(request.Id);
@@ -80,8 +86,8 @@ public class BookingsController(AblMessDbContext db, RoomAvailabilityService ava
         return Ok(bookings.Select(b => b.ToDto()));
     }
 
-    [HttpPut("{id:int}/clock-in")]
-    public async Task<IActionResult> ClockIn(int id)
+    [HttpPut("{id:int}/check-in")]
+    public async Task<IActionResult> CheckIn(int id)
     {
         var booking = await db.Bookings.FindAsync(id);
         if (booking is null)
@@ -90,30 +96,34 @@ public class BookingsController(AblMessDbContext db, RoomAvailabilityService ava
         }
         if (booking.Status != BookingStatus.Booked)
         {
-            return BadRequest($"Booking must be Booked to clock in (currently {booking.Status}).");
+            return BadRequest($"Booking must be Booked to check in (currently {booking.Status}).");
         }
 
-        booking.Status = BookingStatus.ClockIn;
+        booking.Status = BookingStatus.CheckedIn;
         booking.UpdatedAt = DateTime.UtcNow;
+        var checkInRequest = await db.Requests.FindAsync(booking.RequestId);
+        auditLog.Log(AuditActionType.CheckedIn, "Checked in", actorUserId: CurrentUserId, subjectUserId: checkInRequest?.UserId);
         await db.SaveChangesAsync();
         return NoContent();
     }
 
-    [HttpPut("{id:int}/clock-out")]
-    public async Task<IActionResult> ClockOut(int id)
+    [HttpPut("{id:int}/check-out")]
+    public async Task<IActionResult> CheckOut(int id)
     {
         var booking = await db.Bookings.FindAsync(id);
         if (booking is null)
         {
             return NotFound();
         }
-        if (booking.Status != BookingStatus.ClockIn)
+        if (booking.Status != BookingStatus.CheckedIn)
         {
-            return BadRequest($"Booking must be Clock-In to clock out (currently {booking.Status}).");
+            return BadRequest($"Booking must be Checked-In to check out (currently {booking.Status}).");
         }
 
-        booking.Status = BookingStatus.ClockOut;
+        booking.Status = BookingStatus.CheckedOut;
         booking.UpdatedAt = DateTime.UtcNow;
+        var checkOutRequest = await db.Requests.FindAsync(booking.RequestId);
+        auditLog.Log(AuditActionType.CheckedOut, "Checked out", actorUserId: CurrentUserId, subjectUserId: checkOutRequest?.UserId);
         await db.SaveChangesAsync();
         return NoContent();
     }
@@ -126,7 +136,7 @@ public class BookingsController(AblMessDbContext db, RoomAvailabilityService ava
         {
             return NotFound();
         }
-        if (booking.Status is BookingStatus.ClockOut or BookingStatus.Cancelled)
+        if (booking.Status is BookingStatus.CheckedOut or BookingStatus.Cancelled)
         {
             return BadRequest($"Booking cannot be cancelled from status {booking.Status}.");
         }
@@ -141,6 +151,7 @@ public class BookingsController(AblMessDbContext db, RoomAvailabilityService ava
             request.UpdatedAt = DateTime.UtcNow;
         }
 
+        auditLog.Log(AuditActionType.BookingCancelled, "Booking cancelled", actorUserId: CurrentUserId, subjectUserId: request?.UserId);
         await db.SaveChangesAsync();
         return NoContent();
     }

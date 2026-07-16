@@ -10,7 +10,6 @@ import { MyRequestsPage } from './pages/MyRequestsPage'
 import { RoomsPage } from './pages/RoomsPage'
 import { UsersPage } from './pages/UsersPage'
 import { ReferenceDataPage } from './pages/ReferenceDataPage'
-import { ProfilePage } from './pages/ProfilePage'
 import { LogsPage } from './pages/LogsPage'
 
 function HomeRedirect() {
@@ -97,7 +96,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/profile" element={<ProfilePage />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

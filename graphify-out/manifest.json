@@ -1,0 +1,837 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1784082330.204543,
+    "ast_hash": "09eebd13a007c3f2de410bb8e7eb97e6",
+    "semantic_hash": "09eebd13a007c3f2de410bb8e7eb97e6"
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1784093590.604403,
+    "ast_hash": "11922a2887c5be90ba56008c586cad27",
+    "semantic_hash": ""
+  },
+  "ABLMess.sln": {
+    "mtime": 1783867833.4776068,
+    "ast_hash": "a68689f63bbd63e1bc58833df1905e03",
+    "semantic_hash": "a68689f63bbd63e1bc58833df1905e03"
+  },
+  "frontend/.oxlintrc.json": {
+    "mtime": 1783869097.160201,
+    "ast_hash": "029f4905006c1fffd96bc863e2d98d3e",
+    "semantic_hash": "029f4905006c1fffd96bc863e2d98d3e"
+  },
+  "frontend/package.json": {
+    "mtime": 1783870148.9111168,
+    "ast_hash": "b3fb73fdcfdb6ee2e14fa9c3bde70639",
+    "semantic_hash": "b3fb73fdcfdb6ee2e14fa9c3bde70639"
+  },
+  "frontend/src/App.tsx": {
+    "mtime": 1784096233.1681936,
+    "ast_hash": "7bb738c16c1b6f4b0de90086307dabf1",
+    "semantic_hash": ""
+  },
+  "frontend/src/api/client.test.ts": {
+    "mtime": 1783870171.3756607,
+    "ast_hash": "eb941833d32297f4a83eff3ab7d2528c",
+    "semantic_hash": "eb941833d32297f4a83eff3ab7d2528c"
+  },
+  "frontend/src/api/client.ts": {
+    "mtime": 1783869463.3284163,
+    "ast_hash": "879f0d26b387d09e7fe1a88011d8f349",
+    "semantic_hash": "879f0d26b387d09e7fe1a88011d8f349"
+  },
+  "frontend/src/api/types.ts": {
+    "mtime": 1784093412.7277925,
+    "ast_hash": "fea33b7e8aba66b37d52eee77c756ac3",
+    "semantic_hash": ""
+  },
+  "frontend/src/auth/AuthContext.test.tsx": {
+    "mtime": 1783870193.2283976,
+    "ast_hash": "b29570c2ef98304b81f4b857da01576b",
+    "semantic_hash": "b29570c2ef98304b81f4b857da01576b"
+  },
+  "frontend/src/auth/AuthContext.tsx": {
+    "mtime": 1783869447.2728705,
+    "ast_hash": "10a894df93af585b1a8f4e57c6275e05",
+    "semantic_hash": "10a894df93af585b1a8f4e57c6275e05"
+  },
+  "frontend/src/auth/ProtectedRoute.test.tsx": {
+    "mtime": 1784089514.3739538,
+    "ast_hash": "2efad816c99c543be5c9ac6f24e96310",
+    "semantic_hash": ""
+  },
+  "frontend/src/auth/ProtectedRoute.tsx": {
+    "mtime": 1783869201.0151908,
+    "ast_hash": "6caa514ca2149d0507a5ada0f9666e20",
+    "semantic_hash": "6caa514ca2149d0507a5ada0f9666e20"
+  },
+  "frontend/src/components/ConfirmContext.tsx": {
+    "mtime": 1783877726.899219,
+    "ast_hash": "788a0672c0c792bb4a5ccb474c867ae4",
+    "semantic_hash": "788a0672c0c792bb4a5ccb474c867ae4"
+  },
+  "frontend/src/components/Layout.tsx": {
+    "mtime": 1784096214.638302,
+    "ast_hash": "9b82943657937e566bf6a77f16aeaead",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/Status.tsx": {
+    "mtime": 1783874284.0286462,
+    "ast_hash": "69b13b4e7e12c0ce5f1ed4b0c886fd31",
+    "semantic_hash": "69b13b4e7e12c0ce5f1ed4b0c886fd31"
+  },
+  "frontend/src/components/ToastContext.tsx": {
+    "mtime": 1783936562.8183696,
+    "ast_hash": "df11093d7b9235f3f504f8a68f5627a9",
+    "semantic_hash": "df11093d7b9235f3f504f8a68f5627a9"
+  },
+  "frontend/src/components/ui.tsx": {
+    "mtime": 1784096383.0654273,
+    "ast_hash": "604b597d642ff09692d108605ddd6de8",
+    "semantic_hash": ""
+  },
+  "frontend/src/hooks/useBedIndex.ts": {
+    "mtime": 1783877755.3209858,
+    "ast_hash": "06c32e02ea2a7c86de86986701afcbd9",
+    "semantic_hash": "06c32e02ea2a7c86de86986701afcbd9"
+  },
+  "frontend/src/hooks/useFetch.test.ts": {
+    "mtime": 1783870180.827728,
+    "ast_hash": "bf9f1408127e029f0cc623b5ef02348d",
+    "semantic_hash": "bf9f1408127e029f0cc623b5ef02348d"
+  },
+  "frontend/src/hooks/useFetch.ts": {
+    "mtime": 1783869891.425556,
+    "ast_hash": "fb6cb4a0bc86cbc87d0bf3e6ae0fbd0a",
+    "semantic_hash": "fb6cb4a0bc86cbc87d0bf3e6ae0fbd0a"
+  },
+  "frontend/src/main.tsx": {
+    "mtime": 1783936504.6880379,
+    "ast_hash": "20375ce57a2eb16087f8af48181afdf1",
+    "semantic_hash": "20375ce57a2eb16087f8af48181afdf1"
+  },
+  "frontend/src/pages/BookingsPage.tsx": {
+    "mtime": 1784093442.5916376,
+    "ast_hash": "8ee8867dab5760f48e20e2fb032b5693",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/DashboardPage.tsx": {
+    "mtime": 1784091913.7265024,
+    "ast_hash": "cb932fe0754abe6e936f719d23245400",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/LoginPage.test.tsx": {
+    "mtime": 1783870217.8453765,
+    "ast_hash": "232e917797a35970154cf6a7ed3e2fea",
+    "semantic_hash": "232e917797a35970154cf6a7ed3e2fea"
+  },
+  "frontend/src/pages/LoginPage.tsx": {
+    "mtime": 1783936557.8289173,
+    "ast_hash": "4541725a481de0f6b19533b964da9719",
+    "semantic_hash": "4541725a481de0f6b19533b964da9719"
+  },
+  "frontend/src/pages/LogsPage.tsx": {
+    "mtime": 1784093461.5327706,
+    "ast_hash": "efb87c5b7ad6d92c47cfe17c77c69fb7",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/MyRequestsPage.tsx": {
+    "mtime": 1783878690.7135484,
+    "ast_hash": "2b24e0ef6da4fb3ac4d515d0d307868e",
+    "semantic_hash": "2b24e0ef6da4fb3ac4d515d0d307868e"
+  },
+  "frontend/src/pages/ReferenceDataPage.tsx": {
+    "mtime": 1784089000.8546467,
+    "ast_hash": "94136b849ff38b2b23d89580342bc918",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/RequestsPage.tsx": {
+    "mtime": 1784089195.428977,
+    "ast_hash": "518fa5adfb4a9b758cb48300d22a6304",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/RoomsPage.tsx": {
+    "mtime": 1783928286.0030105,
+    "ast_hash": "373677015df86ab931918482abdd188e",
+    "semantic_hash": "373677015df86ab931918482abdd188e"
+  },
+  "frontend/src/pages/UsersPage.tsx": {
+    "mtime": 1783928658.095421,
+    "ast_hash": "b0998d66ccb1481d8802641b22c2cd85",
+    "semantic_hash": "b0998d66ccb1481d8802641b22c2cd85"
+  },
+  "frontend/src/test/setup.ts": {
+    "mtime": 1783870137.3845613,
+    "ast_hash": "2c271435e60d9aeb6cd3a5e1e122a5c0",
+    "semantic_hash": "2c271435e60d9aeb6cd3a5e1e122a5c0"
+  },
+  "frontend/tsconfig.app.json": {
+    "mtime": 1783869097.1873245,
+    "ast_hash": "5f2dafd737dea8a4ddcbb10f5113ac5a",
+    "semantic_hash": "5f2dafd737dea8a4ddcbb10f5113ac5a"
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1783869097.1908054,
+    "ast_hash": "a3d39fa780ebff65444de257f291ce6c",
+    "semantic_hash": "a3d39fa780ebff65444de257f291ce6c"
+  },
+  "frontend/tsconfig.node.json": {
+    "mtime": 1783869097.196996,
+    "ast_hash": "f9cb81ddcea69ffdab672fc8c48dca66",
+    "semantic_hash": "f9cb81ddcea69ffdab672fc8c48dca66"
+  },
+  "frontend/vite.config.ts": {
+    "mtime": 1784090297.1403508,
+    "ast_hash": "ea3ce1447411ffa5141cee68f0338ce7",
+    "semantic_hash": "ea3ce1447411ffa5141cee68f0338ce7"
+  },
+  "src/ABLMess.Api/ABLMess.Api.csproj": {
+    "mtime": 1783868628.74114,
+    "ast_hash": "3e03ff26bf0f460e059738e23c0fd90d",
+    "semantic_hash": "3e03ff26bf0f460e059738e23c0fd90d"
+  },
+  "src/ABLMess.Api/Auth/JwtOptions.cs": {
+    "mtime": 1783866798.6821342,
+    "ast_hash": "708b7f355c4f0cbe783b10b1bf4d7c7e",
+    "semantic_hash": "708b7f355c4f0cbe783b10b1bf4d7c7e"
+  },
+  "src/ABLMess.Api/Auth/TokenService.cs": {
+    "mtime": 1783866805.941236,
+    "ast_hash": "b4636b20ab221cdc5d58ef7e5800ceee",
+    "semantic_hash": "b4636b20ab221cdc5d58ef7e5800ceee"
+  },
+  "src/ABLMess.Api/BookingLogic/RoomAvailabilityService.cs": {
+    "mtime": 1784087742.866921,
+    "ast_hash": "42b9570c3de66cf7376b9e17cfc8d6f2",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/AuthController.cs": {
+    "mtime": 1783866829.7270696,
+    "ast_hash": "1ed549520c687cff1de3dfa134591a9d",
+    "semantic_hash": "1ed549520c687cff1de3dfa134591a9d"
+  },
+  "src/ABLMess.Api/Controllers/BookingsController.cs": {
+    "mtime": 1784093163.6983807,
+    "ast_hash": "d2290f2697b3e643beeca806154c076c",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/DashboardController.cs": {
+    "mtime": 1784093238.1444392,
+    "ast_hash": "1567fe8d78ec264cd93d5c2f03bbd76f",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/HotelPlacementsController.cs": {
+    "mtime": 1784088820.2261164,
+    "ast_hash": "ed1232cd1bfec18f1dc54aa5285b02db",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/JabatansController.cs": {
+    "mtime": 1783867334.0249515,
+    "ast_hash": "3dbe98ff0c436747f46e3ce7e491c89c",
+    "semantic_hash": "3dbe98ff0c436747f46e3ce7e491c89c"
+  },
+  "src/ABLMess.Api/Controllers/LocationsController.cs": {
+    "mtime": 1784087817.1997075,
+    "ast_hash": "534d61a2c6a584e54edc864eccba2891",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/RequestsController.cs": {
+    "mtime": 1784088774.3323405,
+    "ast_hash": "a8662df45b4aaae6530613f539768773",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/RoomsController.cs": {
+    "mtime": 1784088846.2212908,
+    "ast_hash": "51fbfc18de4501c6b752146560e040ee",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Controllers/ShipsController.cs": {
+    "mtime": 1783867325.0250125,
+    "ast_hash": "143adf9865eb41d7a6cd2b8d1343599a",
+    "semantic_hash": "143adf9865eb41d7a6cd2b8d1343599a"
+  },
+  "src/ABLMess.Api/Controllers/UsersController.cs": {
+    "mtime": 1784087176.6288204,
+    "ast_hash": "4ccc965d722a47a574e1ca2e19ffebb7",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Data/AblMessDbContext.cs": {
+    "mtime": 1784088733.990382,
+    "ast_hash": "c3db3a4ffec3afd28bed06911f81f960",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Data/SeedData.cs": {
+    "mtime": 1784087181.6347647,
+    "ast_hash": "c859350b0be839f91aada64f51ddeb14",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/AuthDtos.cs": {
+    "mtime": 1783866811.8727772,
+    "ast_hash": "9add0db4fdd77717ed3665588e1586f4",
+    "semantic_hash": "9add0db4fdd77717ed3665588e1586f4"
+  },
+  "src/ABLMess.Api/Dtos/BookingDtos.cs": {
+    "mtime": 1783867081.2110727,
+    "ast_hash": "7373934840b8aa1a0c3b69a9497e8c59",
+    "semantic_hash": "7373934840b8aa1a0c3b69a9497e8c59"
+  },
+  "src/ABLMess.Api/Dtos/DashboardDtos.cs": {
+    "mtime": 1784092966.5966108,
+    "ast_hash": "52a2a07a00de89f0412f7eceedf2763e",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/ReferenceDataDtos.cs": {
+    "mtime": 1784087760.5270178,
+    "ast_hash": "47ac85fce168e99ec0874e8914a3c9a7",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/RoomDtos.cs": {
+    "mtime": 1784087767.6364279,
+    "ast_hash": "20766dcbb8c80139fbc405c9528559c1",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/UserDtos.cs": {
+    "mtime": 1784087147.7314813,
+    "ast_hash": "dd528d12bab953485eec1f7220e1e59c",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/UserMappingExtensions.cs": {
+    "mtime": 1784087152.2771366,
+    "ast_hash": "b4c9f2f3d1564c535ed392f23723449c",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260712142500_InitialCreate.Designer.cs": {
+    "mtime": 1783866300.194451,
+    "ast_hash": "df59137f767422f5ea8d2018b137bf1b",
+    "semantic_hash": "df59137f767422f5ea8d2018b137bf1b"
+  },
+  "src/ABLMess.Api/Migrations/20260712142500_InitialCreate.cs": {
+    "mtime": 1783866300.1928847,
+    "ast_hash": "c387627dba8919f4ddd7cecd7c3014b8",
+    "semantic_hash": "c387627dba8919f4ddd7cecd7c3014b8"
+  },
+  "src/ABLMess.Api/Migrations/20260712143005_AddNotifications.Designer.cs": {
+    "mtime": 1783866605.4302282,
+    "ast_hash": "41ecfc540466750287f56556886c8a23",
+    "semantic_hash": "41ecfc540466750287f56556886c8a23"
+  },
+  "src/ABLMess.Api/Migrations/20260712143005_AddNotifications.cs": {
+    "mtime": 1783866605.4282289,
+    "ast_hash": "e893f12844f138f273cf09da22e3b938",
+    "semantic_hash": "e893f12844f138f273cf09da22e3b938"
+  },
+  "src/ABLMess.Api/Migrations/20260712143532_MakeUserShipJabatanNullable.Designer.cs": {
+    "mtime": 1783866932.947111,
+    "ast_hash": "71ce2ae4f3dd516c9e2fe5beb0e39105",
+    "semantic_hash": "71ce2ae4f3dd516c9e2fe5beb0e39105"
+  },
+  "src/ABLMess.Api/Migrations/20260712143532_MakeUserShipJabatanNullable.cs": {
+    "mtime": 1783866932.947111,
+    "ast_hash": "6b45e3eef7b8aa2eb72331fc5ce51acb",
+    "semantic_hash": "6b45e3eef7b8aa2eb72331fc5ce51acb"
+  },
+  "src/ABLMess.Api/Migrations/20260712144007_AddPlacedRequestStatus.Designer.cs": {
+    "mtime": 1783867207.8578508,
+    "ast_hash": "4fd2c38e2b0134904d48e5ae585318c1",
+    "semantic_hash": "4fd2c38e2b0134904d48e5ae585318c1"
+  },
+  "src/ABLMess.Api/Migrations/20260712144007_AddPlacedRequestStatus.cs": {
+    "mtime": 1783867207.8568506,
+    "ast_hash": "3340a54c472d063c8cff6146edffebe1",
+    "semantic_hash": "3340a54c472d063c8cff6146edffebe1"
+  },
+  "src/ABLMess.Api/Migrations/AblMessDbContextModelSnapshot.cs": {
+    "mtime": 1784088923.8053856,
+    "ast_hash": "3b11ba2c8ecabee88d73ae966b467b60",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/Bed.cs": {
+    "mtime": 1784087720.724369,
+    "ast_hash": "f1aec5dd68deef2f1a8e991f68077c82",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/Booking.cs": {
+    "mtime": 1783866225.904927,
+    "ast_hash": "e8f55567d206469bd6d6ffa1079e4da8",
+    "semantic_hash": "e8f55567d206469bd6d6ffa1079e4da8"
+  },
+  "src/ABLMess.Api/Models/Enums.cs": {
+    "mtime": 1784093131.3178895,
+    "ast_hash": "7b88918def4d05136c859ad913373e11",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/HotelPlacement.cs": {
+    "mtime": 1783866231.2982013,
+    "ast_hash": "957603057fa2f940e3ecf85d788fb472",
+    "semantic_hash": "957603057fa2f940e3ecf85d788fb472"
+  },
+  "src/ABLMess.Api/Models/Jabatan.cs": {
+    "mtime": 1783866195.39536,
+    "ast_hash": "c7deadfd82d2f5d7108d6033c5494aa9",
+    "semantic_hash": "c7deadfd82d2f5d7108d6033c5494aa9"
+  },
+  "src/ABLMess.Api/Models/Location.cs": {
+    "mtime": 1784087725.1834207,
+    "ast_hash": "c8d0b7fe231bd04b461384a94e87c602",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/Notification.cs": {
+    "mtime": 1784093141.539968,
+    "ast_hash": "52a6a6f1c5e0ced03ddc5157372d72bd",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/Request.cs": {
+    "mtime": 1783866218.4752858,
+    "ast_hash": "4e366bfdaa3c6e1ae1bac1575b203e88",
+    "semantic_hash": "4e366bfdaa3c6e1ae1bac1575b203e88"
+  },
+  "src/ABLMess.Api/Models/Room.cs": {
+    "mtime": 1783866208.0804195,
+    "ast_hash": "374dd96f83c193a4c78db7218edf9376",
+    "semantic_hash": "374dd96f83c193a4c78db7218edf9376"
+  },
+  "src/ABLMess.Api/Models/Ship.cs": {
+    "mtime": 1783866198.9419181,
+    "ast_hash": "d7767e389157bf1f3718c635327fbc69",
+    "semantic_hash": "d7767e389157bf1f3718c635327fbc69"
+  },
+  "src/ABLMess.Api/Models/User.cs": {
+    "mtime": 1784087007.9413736,
+    "ast_hash": "f034d6bc38d375d9e32f7224bddd54c8",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Notifications/IEmailSender.cs": {
+    "mtime": 1783866526.4410672,
+    "ast_hash": "1de05adb4250f80ef1c797309d713e33",
+    "semantic_hash": "1de05adb4250f80ef1c797309d713e33"
+  },
+  "src/ABLMess.Api/Notifications/NotificationService.cs": {
+    "mtime": 1784093253.2784605,
+    "ast_hash": "c9897d7b733d60d50013243d40ac1ca9",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Notifications/ReminderBackgroundService.cs": {
+    "mtime": 1784093271.4877734,
+    "ast_hash": "67a959478d8bd8b7a24f04492b90bbca",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Notifications/SmtpEmailSender.cs": {
+    "mtime": 1783866540.1436217,
+    "ast_hash": "13b3a2d8b712b918e822bd242a69d095",
+    "semantic_hash": "13b3a2d8b712b918e822bd242a69d095"
+  },
+  "src/ABLMess.Api/Notifications/SmtpOptions.cs": {
+    "mtime": 1783866533.3344028,
+    "ast_hash": "0222a3479ebd48db1aef8e3ba5faadff",
+    "semantic_hash": "0222a3479ebd48db1aef8e3ba5faadff"
+  },
+  "src/ABLMess.Api/OpenApiBearerSecuritySchemeTransformer.cs": {
+    "mtime": 1783868643.0697954,
+    "ast_hash": "caa1bce468c9e53104bfe5790fc19b9a",
+    "semantic_hash": "caa1bce468c9e53104bfe5790fc19b9a"
+  },
+  "src/ABLMess.Api/Program.cs": {
+    "mtime": 1784088744.2896874,
+    "ast_hash": "e8fe805e511eaf0c6be34fca1dcf75d2",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Properties/launchSettings.json": {
+    "mtime": 1783866147.529083,
+    "ast_hash": "c71feed34c161a39f932ca959d404140",
+    "semantic_hash": "c71feed34c161a39f932ca959d404140"
+  },
+  "src/ABLMess.Api/appsettings.Development.json": {
+    "mtime": 1783866147.4796221,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "src/ABLMess.Api/appsettings.json": {
+    "mtime": 1783866898.5740495,
+    "ast_hash": "8046ec3d1361d72e95150bf002ebed60",
+    "semantic_hash": "8046ec3d1361d72e95150bf002ebed60"
+  },
+  "src/ABLMess.Api/bin/Debug/net9.0/ABLMess.Api.deps.json": {
+    "mtime": 1783868662.4307783,
+    "ast_hash": "db7e5b12e24bd1b9e61b5bee6a2b4421",
+    "semantic_hash": "db7e5b12e24bd1b9e61b5bee6a2b4421"
+  },
+  "src/ABLMess.Api/bin/Debug/net9.0/ABLMess.Api.runtimeconfig.json": {
+    "mtime": 1783868662.4606855,
+    "ast_hash": "d09aa8da1c344272be514a23bfaf0bb8",
+    "semantic_hash": "d09aa8da1c344272be514a23bfaf0bb8"
+  },
+  "src/ABLMess.Api/bin/Debug/net9.0/ABLMess.Api.staticwebassets.endpoints.json": {
+    "mtime": 1783866277.7262726,
+    "ast_hash": "f44ca44dd881261586b84442f2201257",
+    "semantic_hash": "f44ca44dd881261586b84442f2201257"
+  },
+  "src/ABLMess.Api/bin/Debug/net9.0/appsettings.Development.json": {
+    "mtime": 1783866147.4796221,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "src/ABLMess.Api/bin/Debug/net9.0/appsettings.json": {
+    "mtime": 1783866898.5740495,
+    "ast_hash": "8046ec3d1361d72e95150bf002ebed60",
+    "semantic_hash": "8046ec3d1361d72e95150bf002ebed60"
+  },
+  "src/ABLMess.Api/obj/ABLMess.Api.csproj.nuget.dgspec.json": {
+    "mtime": 1783868628.74114,
+    "ast_hash": "ca60af1df3761cdfecced428a195fc5f",
+    "semantic_hash": "ca60af1df3761cdfecced428a195fc5f"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs": {
+    "mtime": 1783866239.0058165,
+    "ast_hash": "ff3517b1163003098ee37a1a6f1dc08d",
+    "semantic_hash": "ff3517b1163003098ee37a1a6f1dc08d"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/ABLMess.Api.AssemblyInfo.cs": {
+    "mtime": 1783938497.2708848,
+    "ast_hash": "027d104bde61c824b0e7506325e83aec",
+    "semantic_hash": "027d104bde61c824b0e7506325e83aec"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/ABLMess.Api.GlobalUsings.g.cs": {
+    "mtime": 1783866238.6095326,
+    "ast_hash": "27a3303725b3d7fb45be5fb2a2844928",
+    "semantic_hash": "27a3303725b3d7fb45be5fb2a2844928"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/ABLMess.Api.MvcApplicationPartsAssemblyInfo.cs": {
+    "mtime": 1783868661.919126,
+    "ast_hash": "78ebdea476ed39e962105ba794fb3dc3",
+    "semantic_hash": "78ebdea476ed39e962105ba794fb3dc3"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/ABLMess.Api.sourcelink.json": {
+    "mtime": 1784022941.9156191,
+    "ast_hash": "a799df36b87ea6f47e59460ecced5795",
+    "semantic_hash": "a799df36b87ea6f47e59460ecced5795"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json": {
+    "mtime": 1784093321.8086116,
+    "ast_hash": "0107651c4c74c557eb69a409afcaa829",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/rjsmrazor.dswa.cache.json": {
+    "mtime": 1784093321.7965357,
+    "ast_hash": "5fcb88a40d325949b107463ae651b795",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/rpswa.dswa.cache.json": {
+    "mtime": 1783866922.0214958,
+    "ast_hash": "31e85277820e28e703392ba3b4046445",
+    "semantic_hash": "31e85277820e28e703392ba3b4046445"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/staticwebassets.build.endpoints.json": {
+    "mtime": 1783866277.7262726,
+    "ast_hash": "f44ca44dd881261586b84442f2201257",
+    "semantic_hash": "f44ca44dd881261586b84442f2201257"
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/staticwebassets.build.json": {
+    "mtime": 1783866277.7212825,
+    "ast_hash": "097d3640a314effef3ea827b9326eaba",
+    "semantic_hash": "097d3640a314effef3ea827b9326eaba"
+  },
+  "src/ABLMess.Api/obj/project.assets.json": {
+    "mtime": 1783868628.74114,
+    "ast_hash": "942daa7c48a4d2090007196221ce5ae9",
+    "semantic_hash": "942daa7c48a4d2090007196221ce5ae9"
+  },
+  "tests/ABLMess.Api.Tests/ABLMess.Api.Tests.csproj": {
+    "mtime": 1783868131.1394486,
+    "ast_hash": "60d302e4fb686fdf9078816963ed013e",
+    "semantic_hash": "60d302e4fb686fdf9078816963ed013e"
+  },
+  "tests/ABLMess.Api.Tests/AuthControllerTests.cs": {
+    "mtime": 1783868815.7361155,
+    "ast_hash": "b40b858a034bf02095055023cd47a32e",
+    "semantic_hash": "b40b858a034bf02095055023cd47a32e"
+  },
+  "tests/ABLMess.Api.Tests/BookingsControllerTests.cs": {
+    "mtime": 1784093507.4160473,
+    "ast_hash": "a2f2c071858374ecf44afe541166feb5",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/DashboardControllerTests.cs": {
+    "mtime": 1784093375.933401,
+    "ast_hash": "b3ebfa2aa0ff22ac932007163019a145",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/FakeEmailSender.cs": {
+    "mtime": 1783867883.4035077,
+    "ast_hash": "c9532d5b23466b63df9c036abd0bc492",
+    "semantic_hash": "c9532d5b23466b63df9c036abd0bc492"
+  },
+  "tests/ABLMess.Api.Tests/HotelPlacementsControllerTests.cs": {
+    "mtime": 1784089604.6308537,
+    "ast_hash": "c0a26bd6753d47bb531cc8ac913eeda6",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/NotificationServiceTests.cs": {
+    "mtime": 1784093507.4882228,
+    "ast_hash": "73254c88471ec1bfc53a39826dbb1ee1",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/ReferenceDataControllerTests.cs": {
+    "mtime": 1784089685.0829914,
+    "ast_hash": "ed8de7f2914fec4df245197bea019411",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/RequestsControllerTests.cs": {
+    "mtime": 1784089650.2834942,
+    "ast_hash": "d7a5c82e5491ef54acbdf406bc89772c",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/RoomAvailabilityServiceTests.cs": {
+    "mtime": 1784093346.1303134,
+    "ast_hash": "5c1d0ad591df4d4d124a1958e28fd9e6",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/RoomsControllerTests.cs": {
+    "mtime": 1784089665.835922,
+    "ast_hash": "fd8877e7a67cde509cb1f27dae948702",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/TestAuthHelper.cs": {
+    "mtime": 1783868798.2834005,
+    "ast_hash": "8e44cdb1f6e7992926c0a360312575dd",
+    "semantic_hash": "8e44cdb1f6e7992926c0a360312575dd"
+  },
+  "tests/ABLMess.Api.Tests/TestDbFactory.cs": {
+    "mtime": 1783867849.2368338,
+    "ast_hash": "c275d987d75e0db9577b9f8951b0358d",
+    "semantic_hash": "c275d987d75e0db9577b9f8951b0358d"
+  },
+  "tests/ABLMess.Api.Tests/TestJwtOptions.cs": {
+    "mtime": 1783868805.5141358,
+    "ast_hash": "d51fa2751b1b78c330ee09edd66893e3",
+    "semantic_hash": "d51fa2751b1b78c330ee09edd66893e3"
+  },
+  "tests/ABLMess.Api.Tests/TokenServiceTests.cs": {
+    "mtime": 1783868824.445311,
+    "ast_hash": "4c6bde5e3674cc8444d64ab3f2e0bfd8",
+    "semantic_hash": "4c6bde5e3674cc8444d64ab3f2e0bfd8"
+  },
+  "tests/ABLMess.Api.Tests/UsersControllerTests.cs": {
+    "mtime": 1784089710.3995404,
+    "ast_hash": "20ac4dff89f21e6c5e1cf1fc3d570af7",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/ABLMess.Api.Tests.deps.json": {
+    "mtime": 1783868938.0697103,
+    "ast_hash": "5a5e582eea8e1d1e38158b967dd720eb",
+    "semantic_hash": "5a5e582eea8e1d1e38158b967dd720eb"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/ABLMess.Api.Tests.runtimeconfig.json": {
+    "mtime": 1783868938.1202638,
+    "ast_hash": "b6e6165ec6a312aa197aadab8391b32e",
+    "semantic_hash": "b6e6165ec6a312aa197aadab8391b32e"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/ABLMess.Api.deps.json": {
+    "mtime": 1783868662.4307783,
+    "ast_hash": "db7e5b12e24bd1b9e61b5bee6a2b4421",
+    "semantic_hash": "db7e5b12e24bd1b9e61b5bee6a2b4421"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/ABLMess.Api.runtimeconfig.json": {
+    "mtime": 1783868662.4606855,
+    "ast_hash": "d09aa8da1c344272be514a23bfaf0bb8",
+    "semantic_hash": "d09aa8da1c344272be514a23bfaf0bb8"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/ABLMess.Api.staticwebassets.endpoints.json": {
+    "mtime": 1783866277.7262726,
+    "ast_hash": "f44ca44dd881261586b84442f2201257",
+    "semantic_hash": "f44ca44dd881261586b84442f2201257"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/appsettings.Development.json": {
+    "mtime": 1783866147.4796221,
+    "ast_hash": "804b473502a4c415cf75db61c56c32aa",
+    "semantic_hash": "804b473502a4c415cf75db61c56c32aa"
+  },
+  "tests/ABLMess.Api.Tests/bin/Debug/net9.0/appsettings.json": {
+    "mtime": 1783866898.5740495,
+    "ast_hash": "8046ec3d1361d72e95150bf002ebed60",
+    "semantic_hash": "8046ec3d1361d72e95150bf002ebed60"
+  },
+  "tests/ABLMess.Api.Tests/obj/ABLMess.Api.Tests.csproj.nuget.dgspec.json": {
+    "mtime": 1783868631.2029684,
+    "ast_hash": "949f9667afa6304eb55d8dcafd30fd45",
+    "semantic_hash": "949f9667afa6304eb55d8dcafd30fd45"
+  },
+  "tests/ABLMess.Api.Tests/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs": {
+    "mtime": 1783867833.8847284,
+    "ast_hash": "ff3517b1163003098ee37a1a6f1dc08d",
+    "semantic_hash": "ff3517b1163003098ee37a1a6f1dc08d"
+  },
+  "tests/ABLMess.Api.Tests/obj/Debug/net9.0/ABLMess.Api.Tests.AssemblyInfo.cs": {
+    "mtime": 1783938497.517531,
+    "ast_hash": "55f2fe9de3cf14f63f92c236ae62c187",
+    "semantic_hash": "55f2fe9de3cf14f63f92c236ae62c187"
+  },
+  "tests/ABLMess.Api.Tests/obj/Debug/net9.0/ABLMess.Api.Tests.GlobalUsings.g.cs": {
+    "mtime": 1783867833.8144727,
+    "ast_hash": "85ade9612eda34da064d8501bc008ac7",
+    "semantic_hash": "85ade9612eda34da064d8501bc008ac7"
+  },
+  "tests/ABLMess.Api.Tests/obj/Debug/net9.0/ABLMess.Api.Tests.sourcelink.json": {
+    "mtime": 1784089588.334777,
+    "ast_hash": "a799df36b87ea6f47e59460ecced5795",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/obj/project.assets.json": {
+    "mtime": 1783868631.1894326,
+    "ast_hash": "b82adecd5fb9178aa22efe8061c8b888",
+    "semantic_hash": "b82adecd5fb9178aa22efe8061c8b888"
+  },
+  "frontend/src/components/BookModal.tsx": {
+    "mtime": 1784089159.263962,
+    "ast_hash": "852bd82ad3b5a366cf4dc1883bd2562e",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/PlaceModal.tsx": {
+    "mtime": 1784089169.4476075,
+    "ast_hash": "572f988bdf8147cd21739fd3d82d869b",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/ProfileModal.tsx": {
+    "mtime": 1784096169.051367,
+    "ast_hash": "686db6e8dd8cc4e04364be2552893e77",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/Topbar.tsx": {
+    "mtime": 1784096184.1236756,
+    "ast_hash": "cc360a65234d54efa6cf02a65a4de42c",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/icons.tsx": {
+    "mtime": 1784096355.800017,
+    "ast_hash": "34b8954b271bc7a4d5bb1b244617ebab",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/CheckInOutLists.tsx": {
+    "mtime": 1784093452.752658,
+    "ast_hash": "b008b48b897161e98f3cf4ec1119308a",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/HotelPlacementTable.tsx": {
+    "mtime": 1784092578.3243976,
+    "ast_hash": "6244271856f430deaf9a90848c79d052",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/OccupancyByLocationCard.tsx": {
+    "mtime": 1784092555.8093293,
+    "ast_hash": "7d72e222a7a412fb877afc3b3c8b8087",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/PendingRequestsCard.tsx": {
+    "mtime": 1784092526.3924832,
+    "ast_hash": "0d679246ccce52dab120b5d0759b0fcf",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/RecentActivitiesFeed.tsx": {
+    "mtime": 1784093471.9483109,
+    "ast_hash": "c62f6c16782d47d348413f37009c1d87",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/RoomAvailabilityLiveCard.tsx": {
+    "mtime": 1784092565.99748,
+    "ast_hash": "fdd14c8ed0d20c7a7b539657118826c0",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/dashboard/StatTilesRow.tsx": {
+    "mtime": 1784092493.8167841,
+    "ast_hash": "1c92ed6a629a63c4dde975745b3b316a",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Audit/AuditLogService.cs": {
+    "mtime": 1784088722.5123959,
+    "ast_hash": "23deee29e5a34d76c8e2f826b7c5f9bb",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Dtos/ActivityDtos.cs": {
+    "mtime": 1784088749.2815337,
+    "ast_hash": "5cbe8a7c10d19e82609557ff075e4276",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715035352_AddUserEmployeeCodeAndPhoto.Designer.cs": {
+    "mtime": 1784087632.6011386,
+    "ast_hash": "f0d6b4caaa4114cee80b0477315848e4",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715035352_AddUserEmployeeCodeAndPhoto.cs": {
+    "mtime": 1784087653.4552588,
+    "ast_hash": "bb365bc6129f71eb7a13aa49309a5944",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715040639_AddBedStatusAndLocationImage.Designer.cs": {
+    "mtime": 1784088399.6327562,
+    "ast_hash": "890b5ea662f580ee509629287e69fd94",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715040639_AddBedStatusAndLocationImage.cs": {
+    "mtime": 1784088399.6295567,
+    "ast_hash": "1b096ed0d5c1915d7cb7933c5faab21e",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715041523_AddAuditLog.Designer.cs": {
+    "mtime": 1784088923.8053856,
+    "ast_hash": "f34a24f47b29d8bef8bac9ef5796e826",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Migrations/20260715041523_AddAuditLog.cs": {
+    "mtime": 1784088923.8053856,
+    "ast_hash": "17e22a66dd0206cb2d31bfe7bb4f3190",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/Models/AuditLog.cs": {
+    "mtime": 1784088709.237044,
+    "ast_hash": "53aceead217a7a18d6d1516047d907c2",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784082330.192494,
+    "ast_hash": "8a6643a420fdad6bfb583523bc6cef16",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1783868763.5509326,
+    "ast_hash": "3d63d858e0e96a477fc36605b6fb6d93",
+    "semantic_hash": ""
+  },
+  "REQUIREMENTS.md": {
+    "mtime": 1784089496.7586896,
+    "ast_hash": "dd3a72fab4fdb8cd3d9daec354d0f2d2",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1783868151.879165,
+    "ast_hash": "61f529213878dbc8de8171156e0a511c",
+    "semantic_hash": ""
+  },
+  "frontend/README.md": {
+    "mtime": 1783869097.2000566,
+    "ast_hash": "10495bfcc6c568eca4dab6dd5df795d3",
+    "semantic_hash": ""
+  },
+  "frontend/index.html": {
+    "mtime": 1783870402.1872807,
+    "ast_hash": "431c21f42a510e92137df1395c333edd",
+    "semantic_hash": ""
+  },
+  "src/ABLMess.Api/obj/Debug/net9.0/ABLMess.Api.csproj.FileListAbsolute.txt": {
+    "mtime": 1783928700.0239327,
+    "ast_hash": "067a88e8e125ed79d65503785b1f965d",
+    "semantic_hash": ""
+  },
+  "tests/ABLMess.Api.Tests/obj/Debug/net9.0/ABLMess.Api.Tests.csproj.FileListAbsolute.txt": {
+    "mtime": 1783928700.9606545,
+    "ast_hash": "5e5ab0257a7ea9aaa2bf185e6230fb14",
+    "semantic_hash": ""
+  },
+  "frontend/public/favicon.svg": {
+    "mtime": 1783869097.2470412,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "frontend/public/icons.svg": {
+    "mtime": 1783869097.262681,
+    "ast_hash": "3b4fcfcf393eca4d264dca4a4663bc37",
+    "semantic_hash": ""
+  }
+}

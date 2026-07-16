@@ -1,3 +1,4 @@
+using ABLMess.Api.Audit;
 using ABLMess.Api.BookingLogic;
 using ABLMess.Api.Controllers;
 using ABLMess.Api.Data;
@@ -14,10 +15,13 @@ public class RoomsControllerTests
     {
         var db = TestDbFactory.Create();
         var location = new Location { LocationName = "Dock A", LocationAddress = "Somewhere" };
+        var gs = new User { FirstName = "G", LastName = "S", Email = "gs@x.com", UserType = UserType.GS };
         db.Locations.Add(location);
+        db.Users.Add(gs);
         db.SaveChanges();
 
-        var controller = new RoomsController(db, new RoomAvailabilityService(db));
+        var controller = new RoomsController(db, new RoomAvailabilityService(db), new AuditLogService(db));
+        TestAuthHelper.SetUser(controller, gs.Id, "GS");
         return (controller, db, location);
     }
 

@@ -16,14 +16,14 @@ public class LocationsController(AblMessDbContext db) : ControllerBase
     public async Task<ActionResult<List<LocationDto>>> GetAll()
     {
         var locations = await db.Locations.ToListAsync();
-        return Ok(locations.Select(l => new LocationDto(l.Id, l.LocationName, l.LocationAddress)));
+        return Ok(locations.Select(l => new LocationDto(l.Id, l.LocationName, l.LocationAddress, l.ImageUrl)));
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<LocationDto>> GetById(int id)
     {
         var location = await db.Locations.FindAsync(id);
-        return location is null ? NotFound() : Ok(new LocationDto(location.Id, location.LocationName, location.LocationAddress));
+        return location is null ? NotFound() : Ok(new LocationDto(location.Id, location.LocationName, location.LocationAddress, location.ImageUrl));
     }
 
     [HttpPost]
@@ -33,12 +33,13 @@ public class LocationsController(AblMessDbContext db) : ControllerBase
         {
             LocationName = dto.LocationName,
             LocationAddress = dto.LocationAddress,
+            ImageUrl = dto.ImageUrl,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };
         db.Locations.Add(location);
         await db.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetById), new { id = location.Id }, new LocationDto(location.Id, location.LocationName, location.LocationAddress));
+        return CreatedAtAction(nameof(GetById), new { id = location.Id }, new LocationDto(location.Id, location.LocationName, location.LocationAddress, location.ImageUrl));
     }
 
     [HttpPut("{id:int}")]
@@ -52,9 +53,10 @@ public class LocationsController(AblMessDbContext db) : ControllerBase
 
         location.LocationName = dto.LocationName;
         location.LocationAddress = dto.LocationAddress;
+        location.ImageUrl = dto.ImageUrl;
         location.UpdatedAt = DateTime.UtcNow;
         await db.SaveChangesAsync();
-        return Ok(new LocationDto(location.Id, location.LocationName, location.LocationAddress));
+        return Ok(new LocationDto(location.Id, location.LocationName, location.LocationAddress, location.ImageUrl));
     }
 
     [HttpDelete("{id:int}")]

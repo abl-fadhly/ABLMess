@@ -89,7 +89,7 @@ public class LocationsControllerTests
         var db = TestDbFactory.Create();
         var controller = new LocationsController(db);
 
-        await controller.Create(new CreateLocationDto("Dock A", "123 Harbor Rd"));
+        await controller.Create(new CreateLocationDto("Dock A", "123 Harbor Rd", null));
 
         var all = await controller.GetAll();
         var ok = Assert.IsType<OkObjectResult>(all.Result);
@@ -103,10 +103,10 @@ public class LocationsControllerTests
     {
         var db = TestDbFactory.Create();
         var controller = new LocationsController(db);
-        var created = await controller.Create(new CreateLocationDto("Dock A", "Old Address"));
+        var created = await controller.Create(new CreateLocationDto("Dock A", "Old Address", null));
         var id = ((LocationDto)((CreatedAtActionResult)created.Result!).Value!).Id;
 
-        var updated = await controller.Update(id, new CreateLocationDto("Dock A", "New Address"));
+        var updated = await controller.Update(id, new CreateLocationDto("Dock A", "New Address", null));
 
         var ok = Assert.IsType<OkObjectResult>(updated.Result);
         Assert.Equal("New Address", ((LocationDto)ok.Value!).LocationAddress);

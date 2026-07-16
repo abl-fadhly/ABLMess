@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using ABLMess.Api.Audit;
 using ABLMess.Api.Controllers;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
@@ -14,7 +15,7 @@ public class RequestsControllerTests
 {
     private static RequestsController BuildController(AblMessDbContext db, int userId, string role)
     {
-        var controller = new RequestsController(db);
+        var controller = new RequestsController(db, new AuditLogService(db));
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, userId.ToString()),

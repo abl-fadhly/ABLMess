@@ -1,6 +1,8 @@
 using System.Security.Claims;
+using ABLMess.Api.Audit;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
+using ABLMess.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace ABLMess.Api.Controllers;
 [ApiController]
 [Route("api/hotel-placements")]
 [Authorize(Roles = "Admin,GS")]
-public class HotelPlacementsController(AblMessDbContext db) : ControllerBase
+public class HotelPlacementsController(AblMessDbContext db, AuditLogService auditLog) : ControllerBase
 {
     private int CurrentUserId => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
@@ -49,6 +51,7 @@ public class HotelPlacementsController(AblMessDbContext db) : ControllerBase
         db.HotelPlacements.Add(placement);
         request.Status = RequestStatus.Placed;
         request.UpdatedAt = DateTime.UtcNow;
+        auditLog.Log(AuditActionType.HotelPlacementCreated, $"Placed at {dto.HotelName}", actorUserId: CurrentUserId, subjectUserId: request.UserId);
         await db.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = placement.Id }, placement.ToDto());

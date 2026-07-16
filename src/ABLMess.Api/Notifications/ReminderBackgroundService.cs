@@ -33,24 +33,24 @@ public class ReminderBackgroundService(IServiceScopeFactory scopeFactory, ILogge
 
         var tomorrow = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(1));
 
-        var clockInCandidates = await db.Bookings
+        var checkInCandidates = await db.Bookings
             .Where(b => b.From == tomorrow && b.Status == BookingStatus.Booked)
-            .Where(b => !db.Notifications.Any(n => n.BookingId == b.Id && n.Type == NotificationType.ClockInReminder))
+            .Where(b => !db.Notifications.Any(n => n.BookingId == b.Id && n.Type == NotificationType.CheckInReminder))
             .ToListAsync(cancellationToken);
 
-        foreach (var booking in clockInCandidates)
+        foreach (var booking in checkInCandidates)
         {
-            await notifications.NotifyClockInReminderAsync(booking, cancellationToken);
+            await notifications.NotifyCheckInReminderAsync(booking, cancellationToken);
         }
 
-        var clockOutCandidates = await db.Bookings
-            .Where(b => b.To == tomorrow && (b.Status == BookingStatus.Booked || b.Status == BookingStatus.ClockIn))
-            .Where(b => !db.Notifications.Any(n => n.BookingId == b.Id && n.Type == NotificationType.ClockOutReminder))
+        var checkOutCandidates = await db.Bookings
+            .Where(b => b.To == tomorrow && (b.Status == BookingStatus.Booked || b.Status == BookingStatus.CheckedIn))
+            .Where(b => !db.Notifications.Any(n => n.BookingId == b.Id && n.Type == NotificationType.CheckOutReminder))
             .ToListAsync(cancellationToken);
 
-        foreach (var booking in clockOutCandidates)
+        foreach (var booking in checkOutCandidates)
         {
-            await notifications.NotifyClockOutReminderAsync(booking, cancellationToken);
+            await notifications.NotifyCheckOutReminderAsync(booking, cancellationToken);
         }
     }
 }

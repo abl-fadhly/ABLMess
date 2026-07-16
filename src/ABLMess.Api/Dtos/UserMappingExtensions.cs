@@ -13,5 +13,7 @@ public static class UserMappingExtensions
         user.JabatanId,
         user.Phone,
         user.UserType,
-        user.Email);
+        user.Email,
+        user.EmployeeCode,
+        user.PhotoUrl);
 }

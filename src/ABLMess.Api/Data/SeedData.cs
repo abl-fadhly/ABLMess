@@ -26,6 +26,7 @@ public static class SeedData
             UserType = UserType.Admin,
             Email = email,
             Phone = string.Empty,
+            EmployeeCode = "ADM-9001",
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };

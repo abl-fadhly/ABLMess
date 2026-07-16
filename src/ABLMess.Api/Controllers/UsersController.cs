@@ -16,6 +16,29 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
 {
     private int CurrentUserId => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
+    private static readonly Dictionary<UserType, (string Prefix, int Base)> EmployeeCodeSchemes = new()
+    {
+        [UserType.Crew] = ("CRW", 1000),
+        [UserType.GS] = ("GS", 2000),
+        [UserType.Admin] = ("ADM", 9000),
+    };
+
+    private async Task<string> GenerateEmployeeCodeAsync(UserType type)
+    {
+        var (prefix, baseNumber) = EmployeeCodeSchemes[type];
+        var existingCodes = await db.Users
+            .Where(u => u.EmployeeCode.StartsWith(prefix + "-"))
+            .Select(u => u.EmployeeCode)
+            .ToListAsync();
+
+        var maxNumber = existingCodes
+            .Select(code => int.TryParse(code.AsSpan(prefix.Length + 1), out var n) ? n : 0)
+            .DefaultIfEmpty(baseNumber)
+            .Max();
+
+        return $"{prefix}-{Math.Max(maxNumber, baseNumber) + 1}";
+    }
+
     [HttpGet]
     [Authorize(Roles = "Admin,GS")]
     public async Task<ActionResult<List<UserDto>>> GetAll()
@@ -58,6 +81,8 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
             Phone = request.Phone,
             UserType = request.UserType,
             Email = request.Email,
+            EmployeeCode = await GenerateEmployeeCodeAsync(request.UserType),
+            PhotoUrl = request.PhotoUrl,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };
@@ -97,6 +122,7 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
         user.Phone = request.Phone;
         user.UserType = request.UserType;
         user.Email = request.Email;
+        user.PhotoUrl = request.PhotoUrl;
         user.UpdatedAt = DateTime.UtcNow;
 
         await db.SaveChangesAsync();
@@ -116,6 +142,7 @@ public class UsersController(AblMessDbContext db, IPasswordHasher<User> password
         user.LastName = request.LastName;
         user.Phone = request.Phone;
         user.Email = request.Email;
+        user.PhotoUrl = request.PhotoUrl;
         user.UpdatedAt = DateTime.UtcNow;
 
         await db.SaveChangesAsync();

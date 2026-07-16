@@ -31,7 +31,28 @@ public enum RequestStatus
 public enum BookingStatus
 {
     Booked,
-    ClockIn,
-    ClockOut,
+    CheckedIn,
+    CheckedOut,
     Cancelled
+}
+
+public enum BedStatus
+{
+    Available,
+    Occupied,
+    Maintenance
+}
+
+public enum AuditActionType
+{
+    RequestCreated,
+    RequestCancelled,
+    Booked,
+    CheckedIn,
+    CheckedOut,
+    BookingCancelled,
+    HotelPlacementCreated,
+    RoomCreated,
+    RoomUpdated,
+    BedStatusChanged
 }

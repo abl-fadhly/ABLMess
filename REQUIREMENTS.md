@@ -47,7 +47,7 @@ Crew :
 - Request a room
 - see his/her own room history
 - manages his own profile and password
-- receives email notifications: when their request is booked, H-1 reminder before clock-in, H-1 reminder before clock-out
+- receives email notifications: when their request is booked, H-1 reminder before check-in, H-1 reminder before check-out
 
 ## Notifications
 
@@ -56,8 +56,8 @@ Crew :
 - Recipient: Crew only (the requester)
 - Triggers:
   - Request booked (Request status → Booked)
-  - H-1 reminder: one day before Booking.From (upcoming clock-in)
-  - H-1 reminder: one day before Booking.To (upcoming clock-out)
+  - H-1 reminder: one day before Booking.From (upcoming check-in)
+  - H-1 reminder: one day before Booking.To (upcoming check-out)
 - Sent notifications are logged (TbNotification) so GS/Admin can verify a crew member was actually notified.
 
 
@@ -94,11 +94,11 @@ Id, UserId, From, To, Status(Requested, Booked, Placed, Cancelled), Comment, Cre
 - Placed = fulfilled via TbHotelPlacement (outside hotel) instead of a mess room booking.
 
 TbBooking
-Id, Request Id, Bed Id, From, To, Status(Booked, Clock-In, Clock-Out, Cancelled), CreatedAt, UpdatedAt
+Id, Request Id, Bed Id, From, To, Status(Booked, Check-In, Check-Out, Cancelled), CreatedAt, UpdatedAt
 - Booking is against a specific bed (not just a room) — GS picks which bed within the room when booking.
 - Request Id is the single FK linking Booking back to Request (no reverse FK on TbRequest).
 - System must reject a booking for a bed that already has an overlapping active booking for the requested date range (no double-booking a bed, which in turn prevents overbooking the room).
-- Clock-In and Clock-Out are set manually by GS (not crew self-service).
+- Check-In and Check-Out are set manually by GS (not crew self-service).
 - When a Booking is set to Cancelled, its linked Request is also set to Cancelled.
 
 TbHotelPlacement
@@ -106,7 +106,7 @@ Id, Request Id, Hotel Name, Hotel Address, From, To, Notes, CreatedBy (UserId), 
 - Used when a crew's request can't be fulfilled by a mess room (room full) and GS places them in an outside hotel instead. Queryable/reportable, shows up in logs.
 
 TbNotification
-Id, UserId, Booking Id (nullable), Request Id (nullable), Type(RequestBooked, ClockInReminder, ClockOutReminder), Channel(Email), SentAt, Success
+Id, UserId, Booking Id (nullable), Request Id (nullable), Type(RequestBooked, CheckInReminder, CheckOutReminder), Channel(Email), SentAt, Success
 - One row per notification attempt, for audit/troubleshooting.
 
 ## Open Questions

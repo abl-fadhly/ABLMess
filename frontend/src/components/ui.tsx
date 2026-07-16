@@ -1,4 +1,7 @@
+import { useEffect, useRef, useState } from 'react'
 import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from 'react'
+import { Link } from 'react-router-dom'
+import { Icon, iconPaths } from './icons'
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost'
 type Size = 'sm' | 'md'
@@ -48,6 +51,17 @@ export function LinkButton({
       className={`text-sm font-medium underline-offset-2 hover:underline decoration-1 transition-colors disabled:opacity-50 disabled:pointer-events-none ${toneClasses} ${className}`}
       {...props}
     />
+  )
+}
+
+export function CardLink({ to, className = '', children }: { to: string; className?: string; children: ReactNode }) {
+  return (
+    <Link
+      to={to}
+      className={`text-sm font-medium text-secondary-700 hover:text-secondary-800 hover:underline underline-offset-2 ${className}`}
+    >
+      {children}
+    </Link>
   )
 }
 
@@ -114,7 +128,7 @@ export function Card({
   interactive = false,
   children,
 }: {
-  title?: string
+  title?: ReactNode
   action?: ReactNode
   className?: string
   interactive?: boolean
@@ -122,18 +136,48 @@ export function Card({
 }) {
   return (
     <div
-      className={`bg-surface border border-neutral-200/80 rounded-xl shadow-sm shadow-neutral-200/40 p-5 sm:p-6 transition-all duration-200 ${
+      className={`bg-surface border border-neutral-200/80 rounded-xl shadow-sm shadow-neutral-200/40 p-6 sm:p-7 transition-all duration-200 ${
         interactive
           ? 'hover:shadow-md hover:shadow-neutral-300/40 hover:-translate-y-0.5 hover:border-secondary-200 cursor-pointer'
           : ''
       } ${className}`}
     >
       {(title || action) && (
-        <div className="flex items-center justify-between mb-4">
-          {title && <h2 className="font-semibold text-neutral-900">{title}</h2>}
+        <div className="flex items-center justify-between mb-5 gap-2">
+          {title && (
+            <h2 className="text-base font-semibold text-neutral-900 tracking-tight flex items-center gap-2">
+              {title}
+            </h2>
+          )}
           {action}
         </div>
       )}
+      {children}
+    </div>
+  )
+}
+
+const iconCircleTones: Record<'primary' | 'success' | 'warning' | 'error' | 'info' | 'secondary', string> = {
+  primary: 'bg-primary-50 text-primary-600',
+  success: 'bg-success-light text-success-dark',
+  warning: 'bg-warning-light text-warning-dark',
+  error: 'bg-error-light text-error-dark',
+  info: 'bg-info-light text-info-dark',
+  secondary: 'bg-secondary-50 text-secondary-700',
+}
+
+export function IconCircle({
+  tone = 'primary',
+  size = 'md',
+  children,
+}: {
+  tone?: keyof typeof iconCircleTones
+  size?: 'sm' | 'md' | 'lg'
+  children: ReactNode
+}) {
+  const sizeClasses = { sm: 'h-8 w-8', md: 'h-10 w-10', lg: 'h-12 w-12' }[size]
+  return (
+    <div className={`${sizeClasses} rounded-full flex items-center justify-center shrink-0 ${iconCircleTones[tone]}`}>
       {children}
     </div>
   )
@@ -192,7 +236,7 @@ export function Chip({
 }: ButtonHTMLAttributes<HTMLButtonElement> & { active?: boolean }) {
   return (
     <button
-      className={`px-3 py-1 rounded-full text-[13px] font-medium transition-colors ${
+      className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
         active
           ? 'bg-secondary-600 text-white'
           : 'bg-neutral-50 text-neutral-600 hover:bg-neutral-100'
@@ -228,6 +272,171 @@ export function Tr({ children }: { children: ReactNode }) {
   )
 }
 
+const avatarSizeClasses: Record<'sm' | 'md' | 'lg', string> = {
+  sm: 'h-6 w-6 text-[10px]',
+  md: 'h-8 w-8 text-xs',
+  lg: 'h-10 w-10 text-sm',
+}
+
+export function Avatar({
+  name,
+  photoUrl,
+  size = 'md',
+  className = '',
+}: {
+  name: string
+  photoUrl?: string | null
+  size?: 'sm' | 'md' | 'lg'
+  className?: string
+}) {
+  const initials = name
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join('')
+
+  if (photoUrl) {
+    return (
+      <img
+        src={photoUrl}
+        alt={name}
+        className={`${avatarSizeClasses[size]} rounded-full object-cover shrink-0 ${className}`}
+      />
+    )
+  }
+
+  return (
+    <div
+      className={`${avatarSizeClasses[size]} rounded-full bg-secondary-100 text-secondary-700 flex items-center justify-center font-semibold shrink-0 ${className}`}
+      aria-hidden="true"
+    >
+      {initials}
+    </div>
+  )
+}
+
+const progressToneClasses: Record<'primary' | 'success' | 'warning' | 'error', string> = {
+  primary: 'bg-primary-500',
+  success: 'bg-success-default',
+  warning: 'bg-warning-default',
+  error: 'bg-error-default',
+}
+
+export function ProgressBar({
+  value,
+  max,
+  tone = 'primary',
+  className = '',
+}: {
+  value: number
+  max: number
+  tone?: 'primary' | 'success' | 'warning' | 'error'
+  className?: string
+}) {
+  const percent = max <= 0 ? 0 : Math.min(100, Math.max(0, (value / max) * 100))
+  return (
+    <div className={`h-2 w-full rounded-full bg-neutral-100 overflow-hidden ${className}`}>
+      <div
+        className={`h-full rounded-full transition-all ${progressToneClasses[tone]}`}
+        style={{ width: `${percent}%` }}
+      />
+    </div>
+  )
+}
+
+export function StatTile({
+  label,
+  value,
+  sublabel,
+  icon,
+  tone = 'primary',
+}: {
+  label: string
+  value: ReactNode
+  sublabel?: string
+  icon?: ReactNode
+  tone?: keyof typeof iconCircleTones
+}) {
+  return (
+    <div className="bg-surface border border-neutral-200/80 rounded-xl shadow-sm shadow-neutral-200/40 p-6 flex items-center gap-4">
+      {icon && (
+        <IconCircle tone={tone} size="lg">
+          {icon}
+        </IconCircle>
+      )}
+      <div className="min-w-0">
+        <p className="text-sm text-neutral-500">{label}</p>
+        <p className="text-3xl font-bold text-neutral-900 tabular-nums leading-tight">{value}</p>
+        {sublabel && <p className="text-xs text-neutral-400 mt-1 truncate">{sublabel}</p>}
+      </div>
+    </div>
+  )
+}
+
+export function Menu({
+  label,
+  trigger,
+  align = 'right',
+  width = 'w-44',
+  disabled,
+  children,
+}: {
+  label?: ReactNode
+  trigger?: ReactNode
+  align?: 'left' | 'right'
+  width?: string
+  disabled?: boolean
+  children: ReactNode
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function onClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [open])
+
+  return (
+    <div className="relative inline-block" ref={ref}>
+      {trigger ? (
+        <button type="button" disabled={disabled} onClick={() => setOpen((o) => !o)} className="focus:outline-none">
+          {trigger}
+        </button>
+      ) : (
+        <Button size="sm" disabled={disabled} onClick={() => setOpen((o) => !o)}>
+          {label}
+        </Button>
+      )}
+      {open && (
+        <div
+          className={`absolute ${align === 'right' ? 'right-0' : 'left-0'} mt-2 ${width} rounded-lg border border-neutral-200 bg-surface shadow-lg shadow-neutral-900/10 py-1 z-20 animate-fade-in`}
+          onClick={() => setOpen(false)}
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function MenuItem({
+  className = '',
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="button"
+      className={`w-full text-left px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100 transition-colors ${className}`}
+      {...props}
+    />
+  )
+}
+
 export function Modal({
   title,
   onClose,
@@ -246,7 +455,19 @@ export function Modal({
         className="bg-surface rounded-xl p-6 w-full max-w-md space-y-4 shadow-xl shadow-neutral-900/15 animate-scale-in max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="font-semibold text-neutral-900 text-lg tracking-tight">{title}</h2>
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="font-semibold text-neutral-900 text-lg tracking-tight">{title}</h2>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="h-7 w-7 rounded-full flex items-center justify-center text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600 transition-colors shrink-0"
+            >
+              <Icon path={iconPaths.close} className="h-4 w-4" />
+            </button>
+          )}
+        </div>
         {children}
       </div>
     </div>

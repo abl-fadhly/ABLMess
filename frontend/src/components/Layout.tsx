@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
+import { Topbar } from './Topbar'
 
 const navItemClass = ({ isActive }: { isActive: boolean }) =>
   `flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
@@ -31,11 +32,10 @@ const icons = {
   users: 'M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM1.615 16.428a9 9 0 0114.77 0A.75.75 0 0115.75 17H2.25a.75.75 0 01-.635-.572zM17.615 17H15.75a2.25 2.25 0 00-.176-.867 10.98 10.98 0 00-2.94-4.061A6 6 0 0117.615 17z',
   reference: 'M4 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H4zm2 3h8a1 1 0 110 2H6a1 1 0 010-2zm0 4h8a1 1 0 110 2H6a1 1 0 010-2zm0 4h4a1 1 0 110 2H6a1 1 0 010-2z',
   logs: 'M4 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0013.414 6L10 2.586A2 2 0 008.586 2H4zm4 8a1 1 0 011-1h.01a1 1 0 110 2H9a1 1 0 01-1-1zm-3 0a1 1 0 011-1h.01a1 1 0 010 2H6a1 1 0 01-1-1zm7-3a1 1 0 100 2h.01a1 1 0 100-2H12zM5 13a1 1 0 000 2h6a1 1 0 100-2H5z',
-  profile: 'M10 2a4 4 0 100 8 4 4 0 000-8zM3 18a7 7 0 0114 0 1 1 0 01-1 1H4a1 1 0 01-1-1z',
 }
 
 export function Layout() {
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
   const isStaff = user?.userType === 'Admin' || user?.userType === 'GS'
 
   const staffLinks = [
@@ -47,8 +47,6 @@ export function Layout() {
     { to: '/logs', label: 'Logs', icon: icons.logs },
     { to: '/reference-data', label: 'Reference Data', icon: icons.reference },
   ]
-
-  const initials = user ? `${user.firstName[0] ?? ''}${user.lastName[0] ?? ''}`.toUpperCase() : ''
 
   return (
     <div className="min-h-screen flex bg-neutral-100">
@@ -73,41 +71,13 @@ export function Layout() {
               My Requests
             </NavLink>
           )}
-          <NavLink to="/profile" className={navItemClass}>
-            <Icon path={icons.profile} />
-            Profile
-          </NavLink>
         </nav>
-        <div className="p-3 border-t border-neutral-200">
-          <div className="flex items-center gap-2.5 px-2 py-2">
-            <div className="h-8 w-8 rounded-full bg-secondary-100 text-secondary-700 flex items-center justify-center text-xs font-semibold shrink-0">
-              {initials}
-            </div>
-            <div className="min-w-0">
-              <p className="text-sm font-medium text-neutral-900 truncate">
-                {user?.firstName} {user?.lastName}
-              </p>
-              <p className="text-xs text-neutral-500">{user?.userType}</p>
-            </div>
-          </div>
-          <button
-            onClick={logout}
-            className="w-full mt-1 text-left px-2 py-1.5 rounded-lg text-sm text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 transition-colors"
-          >
-            Log out
-          </button>
-        </div>
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
         <header className="md:hidden bg-surface border-b border-neutral-200">
-          <div className="h-14 flex items-center justify-between px-4">
+          <div className="h-14 flex items-center px-4">
             <span className="font-bold text-neutral-900">ABLMess</span>
-            <div className="flex items-center gap-3">
-              <button onClick={logout} className="text-sm text-neutral-500">
-                Log out
-              </button>
-            </div>
           </div>
           <nav className="flex gap-1 px-3 pb-2 overflow-x-auto">
             {isStaff &&
@@ -121,12 +91,10 @@ export function Layout() {
                 My Requests
               </NavLink>
             )}
-            <NavLink to="/profile" className={mobileNavItemClass}>
-              Profile
-            </NavLink>
           </nav>
         </header>
-        <main className="flex-1 px-4 sm:px-8 py-8 max-w-6xl w-full mx-auto">
+        <Topbar />
+        <main className="flex-1 px-4 sm:px-8 py-8 max-w-[1680px] w-full mx-auto">
           <Outlet />
         </main>
       </div>

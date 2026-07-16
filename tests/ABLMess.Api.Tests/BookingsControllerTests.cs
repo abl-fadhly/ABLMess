@@ -1,3 +1,4 @@
+using ABLMess.Api.Audit;
 using ABLMess.Api.BookingLogic;
 using ABLMess.Api.Controllers;
 using ABLMess.Api.Data;
@@ -24,7 +25,8 @@ public class BookingsControllerTests
         db.Beds.Add(bed);
 
         var crew = new User { FirstName = "Crew", LastName = "One", Email = "crew@x.com", UserType = UserType.Crew };
-        db.Users.Add(crew);
+        var gs = new User { FirstName = "G", LastName = "S", Email = "gs@x.com", UserType = UserType.GS };
+        db.Users.AddRange(crew, gs);
 
         var request = new Request { User = crew, From = new DateOnly(2026, 1, 1), To = new DateOnly(2026, 1, 5), Status = RequestStatus.Requested };
         db.Requests.Add(request);
@@ -32,7 +34,8 @@ public class BookingsControllerTests
 
         var availability = new RoomAvailabilityService(db);
         var notifications = new NotificationService(db, new FakeEmailSender());
-        var controller = new BookingsController(db, availability, notifications);
+        var controller = new BookingsController(db, availability, notifications, new AuditLogService(db));
+        TestAuthHelper.SetUser(controller, gs.Id, "GS");
 
         return (controller, db, crew, bed, request);
     }
@@ -92,29 +95,29 @@ public class BookingsControllerTests
     }
 
     [Fact]
-    public async Task ClockIn_Succeeds_FromBookedStatus()
+    public async Task CheckIn_Succeeds_FromBookedStatus()
     {
         var (controller, db, _, bed, request) = SetUp();
         var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.Booked };
         db.Bookings.Add(booking);
         await db.SaveChangesAsync();
 
-        var result = await controller.ClockIn(booking.Id);
+        var result = await controller.CheckIn(booking.Id);
 
         Assert.IsType<NoContentResult>(result);
         var reloaded = await db.Bookings.FindAsync(booking.Id);
-        Assert.Equal(BookingStatus.ClockIn, reloaded!.Status);
+        Assert.Equal(BookingStatus.CheckedIn, reloaded!.Status);
     }
 
     [Fact]
-    public async Task ClockOut_Fails_WhenNotYetClockedIn()
+    public async Task CheckOut_Fails_WhenNotYetCheckedIn()
     {
         var (controller, db, _, bed, request) = SetUp();
         var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.Booked };
         db.Bookings.Add(booking);
         await db.SaveChangesAsync();
 
-        var result = await controller.ClockOut(booking.Id);
+        var result = await controller.CheckOut(booking.Id);
 
         Assert.IsType<BadRequestObjectResult>(result);
     }
@@ -138,10 +141,10 @@ public class BookingsControllerTests
     }
 
     [Fact]
-    public async Task Cancel_Fails_WhenAlreadyClockedOut()
+    public async Task Cancel_Fails_WhenAlreadyCheckedOut()
     {
         var (controller, db, _, bed, request) = SetUp();
-        var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.ClockOut };
+        var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.CheckedOut };
         db.Bookings.Add(booking);
         await db.SaveChangesAsync();
 

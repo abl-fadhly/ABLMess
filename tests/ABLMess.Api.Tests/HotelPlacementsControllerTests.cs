@@ -1,3 +1,4 @@
+using ABLMess.Api.Audit;
 using ABLMess.Api.Controllers;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
@@ -20,7 +21,7 @@ public class HotelPlacementsControllerTests
         db.Requests.Add(request);
         db.SaveChanges();
 
-        var controller = new HotelPlacementsController(db);
+        var controller = new HotelPlacementsController(db, new AuditLogService(db));
         TestAuthHelper.SetUser(controller, gs.Id, "GS");
         return (controller, db, gs, request);
     }

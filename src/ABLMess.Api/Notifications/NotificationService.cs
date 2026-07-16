@@ -18,22 +18,22 @@ public class NotificationService(AblMessDbContext db, IEmailSender emailSender)
         await SendAndLogAsync(request.User, NotificationType.RequestBooked, requestId: request.Id, bookingId: null, subject, body, cancellationToken);
     }
 
-    public async Task NotifyClockInReminderAsync(Booking booking, CancellationToken cancellationToken = default)
+    public async Task NotifyCheckInReminderAsync(Booking booking, CancellationToken cancellationToken = default)
     {
         var user = await GetBookingUserAsync(booking, cancellationToken);
-        var subject = "Reminder: clock-in tomorrow";
-        var body = $"Hi {user.FirstName}, this is a reminder that you're scheduled to clock in tomorrow ({booking.From:yyyy-MM-dd}).";
+        var subject = "Reminder: check-in tomorrow";
+        var body = $"Hi {user.FirstName}, this is a reminder that you're scheduled to check in tomorrow ({booking.From:yyyy-MM-dd}).";
 
-        await SendAndLogAsync(user, NotificationType.ClockInReminder, requestId: booking.RequestId, bookingId: booking.Id, subject, body, cancellationToken);
+        await SendAndLogAsync(user, NotificationType.CheckInReminder, requestId: booking.RequestId, bookingId: booking.Id, subject, body, cancellationToken);
     }
 
-    public async Task NotifyClockOutReminderAsync(Booking booking, CancellationToken cancellationToken = default)
+    public async Task NotifyCheckOutReminderAsync(Booking booking, CancellationToken cancellationToken = default)
     {
         var user = await GetBookingUserAsync(booking, cancellationToken);
-        var subject = "Reminder: clock-out tomorrow";
-        var body = $"Hi {user.FirstName}, this is a reminder that you're scheduled to clock out tomorrow ({booking.To:yyyy-MM-dd}).";
+        var subject = "Reminder: check-out tomorrow";
+        var body = $"Hi {user.FirstName}, this is a reminder that you're scheduled to check out tomorrow ({booking.To:yyyy-MM-dd}).";
 
-        await SendAndLogAsync(user, NotificationType.ClockOutReminder, requestId: booking.RequestId, bookingId: booking.Id, subject, body, cancellationToken);
+        await SendAndLogAsync(user, NotificationType.CheckOutReminder, requestId: booking.RequestId, bookingId: booking.Id, subject, body, cancellationToken);
     }
 
     private async Task<User> GetBookingUserAsync(Booking booking, CancellationToken cancellationToken)

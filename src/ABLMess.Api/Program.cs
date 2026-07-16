@@ -1,5 +1,6 @@
 using System.Text;
 using ABLMess.Api;
+using ABLMess.Api.Audit;
 using ABLMess.Api.Auth;
 using ABLMess.Api.BookingLogic;
 using ABLMess.Api.Data;
@@ -21,6 +22,7 @@ builder.Services.Configure<SmtpOptions>(builder.Configuration.GetSection("Smtp")
 builder.Services.AddScoped<IEmailSender, SmtpEmailSender>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<RoomAvailabilityService>();
+builder.Services.AddScoped<AuditLogService>();
 builder.Services.AddHostedService<ReminderBackgroundService>();
 
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));

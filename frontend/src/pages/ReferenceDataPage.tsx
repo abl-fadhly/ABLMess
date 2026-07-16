@@ -161,6 +161,7 @@ function LocationsTab() {
   const { data: locations, loading, error, reload } = useFetch(() => api.get<LocationDto[]>('/locations'))
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
   const [fieldErrors, setFieldErrors] = useState<{ name?: string; address?: string }>({})
   const [busy, setBusy] = useState(false)
   const confirm = useConfirm()
@@ -175,9 +176,10 @@ function LocationsTab() {
 
     setBusy(true)
     try {
-      await api.post('/locations', { locationName: name, locationAddress: address })
+      await api.post('/locations', { locationName: name, locationAddress: address, imageUrl: imageUrl.trim() || null })
       setName('')
       setAddress('')
+      setImageUrl('')
       setFieldErrors({})
       toast.success('Location added.')
       reload()
@@ -223,6 +225,14 @@ function LocationsTab() {
             placeholder="Address"
           />
         </div>
+        <div className="flex-1 min-w-[10rem]">
+          <Input
+            id="location-image-url"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="Image URL (optional)"
+          />
+        </div>
         <Button onClick={add} disabled={busy}>
           {busy ? 'Adding...' : 'Add'}
         </Button>
@@ -233,9 +243,14 @@ function LocationsTab() {
       {locations && locations.length > 0 && (
         <ul className="divide-y divide-neutral-100">
           {locations.map((l) => (
-            <li key={l.id} className="py-2.5 flex justify-between text-sm">
-              <span className="text-neutral-700">
-                {l.locationName} <span className="text-neutral-400">— {l.locationAddress}</span>
+            <li key={l.id} className="py-2.5 flex justify-between items-center text-sm gap-3">
+              <span className="flex items-center gap-2 min-w-0 text-neutral-700">
+                {l.imageUrl && (
+                  <img src={l.imageUrl} alt="" className="h-6 w-6 rounded object-cover shrink-0" />
+                )}
+                <span className="truncate">
+                  {l.locationName} <span className="text-neutral-400">— {l.locationAddress}</span>
+                </span>
               </span>
               <LinkButton tone="danger" onClick={() => remove(l.id)}>
                 Delete

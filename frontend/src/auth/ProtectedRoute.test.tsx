@@ -18,6 +18,8 @@ function seedLoggedInUser(userType: UserDto['userType']) {
     phone: '',
     userType,
     email: 'test@x.com',
+    employeeCode: 'CRW-1001',
+    photoUrl: null,
   }
   localStorage.setItem('ablmess_user', JSON.stringify(user))
 }

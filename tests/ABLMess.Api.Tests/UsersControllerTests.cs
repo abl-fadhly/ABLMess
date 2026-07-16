@@ -30,7 +30,7 @@ public class UsersControllerTests
     {
         var (controller, db, _) = SetUp();
 
-        var result = await controller.Create(new CreateUserRequest("New", "Crew", Gender.Male, null, null, "0800", UserType.Crew, "new@x.com", "Password1!"));
+        var result = await controller.Create(new CreateUserRequest("New", "Crew", Gender.Male, null, null, "0800", UserType.Crew, "new@x.com", "Password1!", null));
 
         var created = Assert.IsType<CreatedAtActionResult>(result.Result);
         var dto = Assert.IsType<UserDto>(created.Value);
@@ -57,7 +57,7 @@ public class UsersControllerTests
     {
         var (controller, db, seededUser) = SetUp();
 
-        var result = await controller.Update(seededUser.Id, new UpdateUserRequest("Updated", "Name", Gender.Female, null, null, "0811", UserType.GS, "updated@x.com"));
+        var result = await controller.Update(seededUser.Id, new UpdateUserRequest("Updated", "Name", Gender.Female, null, null, "0811", UserType.GS, "updated@x.com", null));
 
         var ok = Assert.IsType<OkObjectResult>(result.Result);
         var dto = Assert.IsType<UserDto>(ok.Value);
@@ -70,7 +70,7 @@ public class UsersControllerTests
     {
         var (controller, _, _) = SetUp();
 
-        var result = await controller.Update(9999, new UpdateUserRequest("A", "B", Gender.Male, null, null, "0", UserType.Crew, "x@x.com"));
+        var result = await controller.Update(9999, new UpdateUserRequest("A", "B", Gender.Male, null, null, "0", UserType.Crew, "x@x.com", null));
 
         Assert.IsType<NotFoundResult>(result.Result);
     }
@@ -116,7 +116,7 @@ public class UsersControllerTests
     {
         var (controller, _, seededUser) = SetUp(role: "Crew");
 
-        var result = await controller.UpdateMe(new UpdateProfileRequest("Self", "Updated", "0822", "self@x.com"));
+        var result = await controller.UpdateMe(new UpdateProfileRequest("Self", "Updated", "0822", "self@x.com", null));
 
         var ok = Assert.IsType<OkObjectResult>(result.Result);
         var dto = Assert.IsType<UserDto>(ok.Value);

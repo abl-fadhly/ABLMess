@@ -1,6 +1,8 @@
 using System.Security.Claims;
+using ABLMess.Api.Audit;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
+using ABLMess.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace ABLMess.Api.Controllers;
 [ApiController]
 [Route("api/requests")]
 [Authorize]
-public class RequestsController(AblMessDbContext db) : ControllerBase
+public class RequestsController(AblMessDbContext db, AuditLogService auditLog) : ControllerBase
 {
     private int CurrentUserId => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
@@ -37,6 +39,7 @@ public class RequestsController(AblMessDbContext db) : ControllerBase
         };
 
         db.Requests.Add(request);
+        auditLog.Log(AuditActionType.RequestCreated, "Room request submitted", actorUserId: CurrentUserId, subjectUserId: CurrentUserId);
         await db.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = request.Id }, request.ToDto());
@@ -105,6 +108,7 @@ public class RequestsController(AblMessDbContext db) : ControllerBase
 
         request.Status = RequestStatus.Cancelled;
         request.UpdatedAt = DateTime.UtcNow;
+        auditLog.Log(AuditActionType.RequestCancelled, "Room request cancelled", actorUserId: CurrentUserId, subjectUserId: request.UserId);
         await db.SaveChangesAsync();
 
         return NoContent();

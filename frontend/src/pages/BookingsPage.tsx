@@ -10,8 +10,8 @@ import type { BookingDto, RequestDto, RoomDto, UserDto } from '../api/types'
 
 const statusTone: Record<string, 'warning' | 'success' | 'neutral' | 'error'> = {
   Booked: 'warning',
-  ClockIn: 'success',
-  ClockOut: 'neutral',
+  CheckedIn: 'success',
+  CheckedOut: 'neutral',
   Cancelled: 'error',
 }
 
@@ -49,8 +49,8 @@ export function BookingsPage() {
     }
   }
 
-  const clockIn = (id: number) => withBusy(id, () => api.put(`/bookings/${id}/clock-in`), 'Clocked in.')
-  const clockOut = (id: number) => withBusy(id, () => api.put(`/bookings/${id}/clock-out`), 'Clocked out.')
+  const checkIn = (id: number) => withBusy(id, () => api.put(`/bookings/${id}/check-in`), 'Checked in.')
+  const checkOut = (id: number) => withBusy(id, () => api.put(`/bookings/${id}/check-out`), 'Checked out.')
   const cancel = async (id: number) => {
     if (
       !(await confirm({
@@ -98,16 +98,16 @@ export function BookingsPage() {
                   <Td>
                     <div className="flex gap-3">
                       {b.status === 'Booked' && (
-                        <LinkButton tone="success" onClick={() => clockIn(b.id)} disabled={busyId === b.id}>
-                          Clock In
+                        <LinkButton tone="success" onClick={() => checkIn(b.id)} disabled={busyId === b.id}>
+                          Check In
                         </LinkButton>
                       )}
-                      {b.status === 'ClockIn' && (
-                        <LinkButton onClick={() => clockOut(b.id)} disabled={busyId === b.id}>
-                          Clock Out
+                      {b.status === 'CheckedIn' && (
+                        <LinkButton onClick={() => checkOut(b.id)} disabled={busyId === b.id}>
+                          Check Out
                         </LinkButton>
                       )}
-                      {(b.status === 'Booked' || b.status === 'ClockIn') && (
+                      {(b.status === 'Booked' || b.status === 'CheckedIn') && (
                         <LinkButton tone="danger" onClick={() => cancel(b.id)} disabled={busyId === b.id}>
                           Cancel
                         </LinkButton>

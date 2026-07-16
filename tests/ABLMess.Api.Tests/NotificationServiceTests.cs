@@ -39,7 +39,7 @@ public class NotificationServiceTests
     }
 
     [Fact]
-    public async Task NotifyClockInReminder_SendsEmail_AndLogsWithBookingId()
+    public async Task NotifyCheckInReminder_SendsEmail_AndLogsWithBookingId()
     {
         var (service, db, sender, crew, request) = SetUp();
         var bed = new Bed { BedName = "B1", Room = new Room { RoomName = "R1", Location = new Location { LocationName = "L1", LocationAddress = "A" } } };
@@ -48,29 +48,29 @@ public class NotificationServiceTests
         db.Bookings.Add(booking);
         await db.SaveChangesAsync();
 
-        await service.NotifyClockInReminderAsync(booking);
+        await service.NotifyCheckInReminderAsync(booking);
 
         Assert.Single(sender.SentEmails);
         var log = Assert.Single(db.Notifications);
-        Assert.Equal(NotificationType.ClockInReminder, log.Type);
+        Assert.Equal(NotificationType.CheckInReminder, log.Type);
         Assert.Equal(booking.Id, log.BookingId);
     }
 
     [Fact]
-    public async Task NotifyClockOutReminder_SendsEmail_AndLogsWithBookingId()
+    public async Task NotifyCheckOutReminder_SendsEmail_AndLogsWithBookingId()
     {
         var (service, db, sender, crew, request) = SetUp();
         var bed = new Bed { BedName = "B1", Room = new Room { RoomName = "R1", Location = new Location { LocationName = "L1", LocationAddress = "A" } } };
-        var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.ClockIn };
+        var booking = new BookingModel { Request = request, Bed = bed, From = request.From, To = request.To, Status = BookingStatus.CheckedIn };
         db.Beds.Add(bed);
         db.Bookings.Add(booking);
         await db.SaveChangesAsync();
 
-        await service.NotifyClockOutReminderAsync(booking);
+        await service.NotifyCheckOutReminderAsync(booking);
 
         Assert.Single(sender.SentEmails);
         var log = Assert.Single(db.Notifications);
-        Assert.Equal(NotificationType.ClockOutReminder, log.Type);
+        Assert.Equal(NotificationType.CheckOutReminder, log.Type);
         Assert.Equal(booking.Id, log.BookingId);
     }
 

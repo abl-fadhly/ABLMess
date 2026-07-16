@@ -142,7 +142,7 @@ public class RoomAvailabilityServiceTests
         var request1 = SeedRequest(db, new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 10));
         var request2 = SeedRequest(db, new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 10));
         db.Bookings.Add(new Booking { Request = request1, Bed = bed1, From = new DateOnly(2026, 1, 1), To = new DateOnly(2026, 1, 10), Status = BookingStatus.Booked });
-        db.Bookings.Add(new Booking { Request = request2, Bed = bed2, From = new DateOnly(2026, 1, 1), To = new DateOnly(2026, 1, 10), Status = BookingStatus.ClockIn });
+        db.Bookings.Add(new Booking { Request = request2, Bed = bed2, From = new DateOnly(2026, 1, 1), To = new DateOnly(2026, 1, 10), Status = BookingStatus.CheckedIn });
         await db.SaveChangesAsync();
         var sut = new RoomAvailabilityService(db);
 

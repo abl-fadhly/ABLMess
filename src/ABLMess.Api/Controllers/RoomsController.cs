@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using ABLMess.Api.Audit;
 using ABLMess.Api.BookingLogic;
 using ABLMess.Api.Data;
 using ABLMess.Api.Dtos;
@@ -11,8 +13,10 @@ namespace ABLMess.Api.Controllers;
 [ApiController]
 [Route("api/rooms")]
 [Authorize(Roles = "Admin,GS")]
-public class RoomsController(AblMessDbContext db, RoomAvailabilityService availability) : ControllerBase
+public class RoomsController(AblMessDbContext db, RoomAvailabilityService availability, AuditLogService auditLog) : ControllerBase
 {
+    private int CurrentUserId => int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
     [HttpGet]
     public async Task<ActionResult<List<RoomDto>>> GetAll()
     {
@@ -58,6 +62,7 @@ public class RoomsController(AblMessDbContext db, RoomAvailabilityService availa
             UpdatedAt = DateTime.UtcNow
         };
         db.Rooms.Add(room);
+        auditLog.Log(AuditActionType.RoomCreated, $"Room '{room.RoomName}' created", actorUserId: CurrentUserId);
         await db.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetById), new { id = room.Id }, new RoomDto(room.Id, room.RoomName, room.LocationId, RoomStatus.Empty, 0));
@@ -81,6 +86,7 @@ public class RoomsController(AblMessDbContext db, RoomAvailabilityService availa
         room.RoomName = dto.RoomName;
         room.LocationId = dto.LocationId;
         room.UpdatedAt = DateTime.UtcNow;
+        auditLog.Log(AuditActionType.RoomUpdated, $"Room '{room.RoomName}' updated", actorUserId: CurrentUserId);
         await db.SaveChangesAsync();
 
         var status = await availability.GetRoomStatusAsync(room.Id);
@@ -119,7 +125,7 @@ public class RoomsController(AblMessDbContext db, RoomAvailabilityService availa
         foreach (var bed in beds)
         {
             var isAvailable = await availability.IsBedAvailableAsync(bed.Id, from, to);
-            result.Add(new BedAvailabilityDto(bed.Id, bed.BedName, isAvailable));
+            result.Add(new BedAvailabilityDto(bed.Id, bed.BedName, isAvailable, bed.Status));
         }
 
         return Ok(result);
@@ -135,7 +141,36 @@ public class RoomsController(AblMessDbContext db, RoomAvailabilityService availa
         }
 
         var beds = await db.Beds.Where(b => b.RoomId == id).ToListAsync();
-        return Ok(beds.Select(b => new BedDto(b.Id, b.RoomId, b.BedName)));
+        return Ok(beds.Select(b => new BedDto(b.Id, b.RoomId, b.BedName, b.Status)));
+    }
+
+    [HttpGet("beds/by-location/{locationId:int}")]
+    public async Task<ActionResult<List<RoomWithBedsDto>>> GetBedsByLocation(int locationId)
+    {
+        var locationExists = await db.Locations.AnyAsync(l => l.Id == locationId);
+        if (!locationExists)
+        {
+            return NotFound("Location not found.");
+        }
+
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+        var rooms = await db.Rooms.Where(r => r.LocationId == locationId).Include(r => r.Beds).ToListAsync();
+
+        var result = new List<RoomWithBedsDto>();
+        foreach (var room in rooms)
+        {
+            var status = await availability.GetRoomStatusAsync(room.Id, today);
+            var beds = new List<BedAvailabilityDto>();
+            foreach (var bed in room.Beds)
+            {
+                var isAvailable = await availability.IsBedAvailableAsync(bed.Id, today, today);
+                beds.Add(new BedAvailabilityDto(bed.Id, bed.BedName, isAvailable, bed.Status));
+            }
+
+            result.Add(new RoomWithBedsDto(room.Id, room.RoomName, status, beds));
+        }
+
+        return Ok(result);
     }
 
     [HttpPost("{id:int}/beds")]
@@ -157,23 +192,34 @@ public class RoomsController(AblMessDbContext db, RoomAvailabilityService availa
         db.Beds.Add(bed);
         await db.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(ListBeds), new { id }, new BedDto(bed.Id, bed.RoomId, bed.BedName));
+        return CreatedAtAction(nameof(ListBeds), new { id }, new BedDto(bed.Id, bed.RoomId, bed.BedName, bed.Status));
     }
 
     [HttpPut("{id:int}/beds/{bedId:int}")]
     public async Task<ActionResult<BedDto>> UpdateBed(int id, int bedId, UpdateBedDto dto)
     {
+        if (dto.Status == BedStatus.Occupied)
+        {
+            return BadRequest("Occupied is a computed status and cannot be set directly; use Available or Maintenance.");
+        }
+
         var bed = await db.Beds.FirstOrDefaultAsync(b => b.Id == bedId && b.RoomId == id);
         if (bed is null)
         {
             return NotFound();
         }
 
+        if (bed.Status != dto.Status)
+        {
+            auditLog.Log(AuditActionType.BedStatusChanged, $"Bed '{bed.BedName}' marked {dto.Status}", actorUserId: CurrentUserId);
+        }
+
         bed.BedName = dto.BedName;
+        bed.Status = dto.Status;
         bed.UpdatedAt = DateTime.UtcNow;
         await db.SaveChangesAsync();
 
-        return Ok(new BedDto(bed.Id, bed.RoomId, bed.BedName));
+        return Ok(new BedDto(bed.Id, bed.RoomId, bed.BedName, bed.Status));
     }
 
     [HttpDelete("{id:int}/beds/{bedId:int}")]

@@ -2,7 +2,19 @@ export type UserType = 'Admin' | 'GS' | 'Crew'
 export type Gender = 'Male' | 'Female'
 export type RoomStatus = 'Empty' | 'Occupied' | 'Full'
 export type RequestStatus = 'Requested' | 'Booked' | 'Placed' | 'Cancelled'
-export type BookingStatus = 'Booked' | 'ClockIn' | 'ClockOut' | 'Cancelled'
+export type BookingStatus = 'Booked' | 'CheckedIn' | 'CheckedOut' | 'Cancelled'
+export type BedStatus = 'Available' | 'Occupied' | 'Maintenance'
+export type AuditActionType =
+  | 'RequestCreated'
+  | 'RequestCancelled'
+  | 'Booked'
+  | 'CheckedIn'
+  | 'CheckedOut'
+  | 'BookingCancelled'
+  | 'HotelPlacementCreated'
+  | 'RoomCreated'
+  | 'RoomUpdated'
+  | 'BedStatusChanged'
 
 export interface UserDto {
   id: number
@@ -14,6 +26,8 @@ export interface UserDto {
   phone: string
   userType: UserType
   email: string
+  employeeCode: string
+  photoUrl: string | null
 }
 
 export interface LoginResponse {
@@ -65,12 +79,21 @@ export interface BedDto {
   id: number
   roomId: number
   bedName: string
+  status: BedStatus
 }
 
 export interface BedAvailabilityDto {
   id: number
   bedName: string
   isAvailable: boolean
+  status: BedStatus
+}
+
+export interface RoomWithBedsDto {
+  id: number
+  roomName: string
+  status: RoomStatus
+  beds: BedAvailabilityDto[]
 }
 
 export interface ShipDto {
@@ -87,6 +110,7 @@ export interface LocationDto {
   id: number
   locationName: string
   locationAddress: string
+  imageUrl: string | null
 }
 
 export interface UpcomingBookingDto {
@@ -95,13 +119,18 @@ export interface UpcomingBookingDto {
   userId: number
   userFullName: string
   date: string
-  kind: 'ClockIn' | 'ClockOut'
+  kind: 'CheckIn' | 'CheckOut'
+  roomName: string
+  bedName: string
+  locationName: string
 }
 
 export interface PendingRequestDto {
   requestId: number
   userId: number
   userFullName: string
+  userEmployeeCode: string
+  userPhotoUrl: string | null
   from: string
   to: string
   status: RequestStatus
@@ -112,7 +141,10 @@ export interface ActiveHotelPlacementDto {
   requestId: number
   userId: number
   userFullName: string
+  userEmployeeCode: string
+  userPhotoUrl: string | null
   hotelName: string
+  reason: string | null
   from: string
   to: string
 }
@@ -125,8 +157,39 @@ export interface LocationOccupancyDto {
   fullRooms: number
 }
 
+export interface LocationBedOccupancyDto {
+  locationId: number
+  locationName: string
+  imageUrl: string | null
+  totalBeds: number
+  occupiedBeds: number
+  availableBeds: number
+  maintenanceBeds: number
+}
+
+export interface DashboardStatsDto {
+  pendingRequestsCount: number
+  availableBedsCount: number
+  totalBedsCount: number
+  occupancyRatePercent: number
+  checkInTodayCount: number
+  checkOutTodayCount: number
+  hotelPlacementCount: number
+}
+
+export interface ActivityDto {
+  id: number
+  actionType: AuditActionType
+  description: string
+  actorUserFullName: string | null
+  subjectUserFullName: string | null
+  createdAt: string
+}
+
 export interface DashboardDto {
+  stats: DashboardStatsDto
   occupancy: LocationOccupancyDto[]
+  bedOccupancy: LocationBedOccupancyDto[]
   upcomingCheckInsAndOuts: {
     tomorrow: UpcomingBookingDto[]
     next3Days: UpcomingBookingDto[]

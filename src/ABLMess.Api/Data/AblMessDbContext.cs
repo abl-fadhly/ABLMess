@@ -15,6 +15,7 @@ public class AblMessDbContext(DbContextOptions<AblMessDbContext> options) : DbCo
     public DbSet<Booking> Bookings => Set<Booking>();
     public DbSet<HotelPlacement> HotelPlacements => Set<HotelPlacement>();
     public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -22,6 +23,10 @@ public class AblMessDbContext(DbContextOptions<AblMessDbContext> options) : DbCo
 
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
+            .IsUnique();
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.EmployeeCode)
             .IsUnique();
 
         modelBuilder.Entity<User>()
@@ -94,6 +99,18 @@ public class AblMessDbContext(DbContextOptions<AblMessDbContext> options) : DbCo
             .HasOne(n => n.Request)
             .WithMany()
             .HasForeignKey(n => n.RequestId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<AuditLog>()
+            .HasOne(a => a.ActorUser)
+            .WithMany()
+            .HasForeignKey(a => a.ActorUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<AuditLog>()
+            .HasOne(a => a.SubjectUser)
+            .WithMany()
+            .HasForeignKey(a => a.SubjectUserId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }

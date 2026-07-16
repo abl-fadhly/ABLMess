@@ -25,8 +25,8 @@ const requestStatusTone: Record<RequestStatus, 'warning' | 'success' | 'info' | 
 
 const bookingStatusTone: Record<BookingStatus, 'warning' | 'success' | 'neutral' | 'error'> = {
   Booked: 'warning',
-  ClockIn: 'success',
-  ClockOut: 'neutral',
+  CheckedIn: 'success',
+  CheckedOut: 'neutral',
   Cancelled: 'error',
 }
 

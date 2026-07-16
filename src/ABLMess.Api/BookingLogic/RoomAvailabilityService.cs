@@ -8,6 +8,12 @@ public class RoomAvailabilityService(AblMessDbContext db)
 {
     public async Task<bool> IsBedAvailableAsync(int bedId, DateOnly from, DateOnly to, int? excludeBookingId = null)
     {
+        var bedStatus = await db.Beds.Where(b => b.Id == bedId).Select(b => b.Status).FirstOrDefaultAsync();
+        if (bedStatus == BedStatus.Maintenance)
+        {
+            return false;
+        }
+
         var query = db.Bookings.Where(b =>
             b.BedId == bedId &&
             b.Status != BookingStatus.Cancelled &&
@@ -25,19 +31,23 @@ public class RoomAvailabilityService(AblMessDbContext db)
     {
         var date = asOf ?? DateOnly.FromDateTime(DateTime.UtcNow);
 
-        var bedIds = await db.Beds.Where(b => b.RoomId == roomId).Select(b => b.Id).ToListAsync();
-        if (bedIds.Count == 0)
+        var beds = await db.Beds.Where(b => b.RoomId == roomId).Select(b => new { b.Id, b.Status }).ToListAsync();
+        if (beds.Count == 0)
         {
             return RoomStatus.Empty;
         }
 
-        var occupiedBedCount = await db.Bookings
+        var bedIds = beds.Select(b => b.Id).ToList();
+        var bookedBedIds = await db.Bookings
             .Where(b => bedIds.Contains(b.BedId) &&
                         b.Status != BookingStatus.Cancelled &&
                         b.From <= date && date <= b.To)
             .Select(b => b.BedId)
             .Distinct()
-            .CountAsync();
+            .ToListAsync();
+
+        var maintenanceBedIds = beds.Where(b => b.Status == BedStatus.Maintenance).Select(b => b.Id);
+        var occupiedBedCount = bookedBedIds.Union(maintenanceBedIds).Count();
 
         return occupiedBedCount switch
         {
